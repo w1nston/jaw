@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Router } from '@reach/router';
 import { css } from 'emotion';
 import ApplicationShell from './ApplicationShell';
-import About from '../../pages/about/components/About';
+import Blog from '../../pages/blog/components/Blog';
 import Home from '../../pages/home/components/Home';
 
 const navStyle = css`
@@ -20,12 +20,12 @@ const App = () => (
   <ApplicationShell>
     <nav className={navStyle}>
       <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <Link to="/blog">Blog</Link>
     </nav>
     <main className={mainStyle} role="main">
       <Router>
         <Home path="/" />
-        <About path="/about" />
+        <Blog path="/blog" />
       </Router>
     </main>
   </ApplicationShell>

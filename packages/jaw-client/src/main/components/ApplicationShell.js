@@ -3,7 +3,7 @@ import { css } from 'emotion';
 
 const headerStyle = css`
   align-items: center;
-  background-color: #247BA0;
+  background-color: #247ba0;
   color: #fffcff;
   display: flex;
   height: 4.75rem;
@@ -19,7 +19,6 @@ const ApplicationShell = ({ children }) => (
       </span>
     </header>
     {children}
-    <footer />
   </section>
 );
 
