@@ -3,7 +3,7 @@ import { Link, Router } from '@reach/router';
 import { css } from 'emotion';
 import ApplicationShell from './ApplicationShell';
 import Home from '../../pages/home/components/Home';
-import Projects from '../../pages/projects/components/Projects';
+import Projects from '../../pages/projects/containers/ProjectsContainer';
 
 const navStyle = css`
   align-items: center;
