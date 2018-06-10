@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link, Router } from '@reach/router';
 import { css } from 'emotion';
+import Loadable from 'react-loadable';
 import ApplicationShell from './ApplicationShell';
 import Home from '../../pages/home/components/Home';
-import Projects from '../../pages/projects/containers/ProjectsContainer';
 
+
+
+const mainStyle = css`
+  padding: 0.625rem 1.25rem;
+`;
+
+/*
 const navStyle = css`
   align-items: center;
   display: flex;
@@ -12,20 +19,31 @@ const navStyle = css`
   justify-content: space-around;
 `;
 
-const mainStyle = css`
-  padding: 0.625rem 1.25rem;
-`;
+const createLoadableComponent = loaderFn => Loadable({
+  loader: loaderFn,
+  loading: Loading,
+});
 
-const App = () => (
-  <ApplicationShell>
-    <nav className={navStyle}>
+const Loading = () => <p>Loading...</p>;
+const Projects = Loadable({
+  loader: () => import('../../pages/projects/containers/ProjectsContainer'),
+  loading: Loading,
+});
+
+TODO
+<nav className={navStyle}>
       <Link to="/">Home</Link>
       <Link to="/projects">Projects</Link>
     </nav>
+
+
+        <Projects path="/projects" />
+*/
+const App = () => (
+  <ApplicationShell>
     <main className={mainStyle} role="main">
       <Router>
         <Home path="/" />
-        <Projects path="/projects" />
       </Router>
     </main>
   </ApplicationShell>
