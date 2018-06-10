@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link, Router } from '@reach/router';
+import { Router } from '@reach/router';
 import { css } from 'emotion';
-import Loadable from 'react-loadable';
 import ApplicationShell from './ApplicationShell';
 import Home from '../../pages/home/components/Home';
 
