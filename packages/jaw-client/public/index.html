@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat"
-              rel="stylesheet">
-    <title>Jonas Amsen-Wallander</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat" rel="stylesheet">
+  <title>Jonas Amsen-Wallander</title>
+  <style>
+    body {
+      background-color: rgba(242, 246, 208, 0.1);
+      color: #333;
+      font-family: 'Fira Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    }
+
+    .header {
+      margin-top: 2.625rem;
+      padding: 0 0.875rem;
+    }
+
+    .header__title {
+      color: #385f71;
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+
+    .header__separator {
+      margin-top: 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .header {
+        margin: 0 auto;
+        margin-top: 2.625rem;
+        max-width: 42.5rem;
+      }
+
+      .header__title {
+        padding: 0 .875rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root">
+    <section>
+      <header class="header">
+        <h1 class="header__title">Jonas Amsen-Wallander</h1>
+        <hr class="header__separator" />
+      </header>
+    </section>
+  </div>
+</body>
+
 </html>

@@ -1,7 +1,8 @@
 body {
-  font-family: 'Fira Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   background-color: rgba(242, 246, 208, 0.1);
   color: #333;
+  font-family: 'Fira Sans', 'Helvetica Neue Light', 'Helvetica Neue',
+    'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -11,10 +12,16 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', 'Helvetica Neue Light', 'Helvetica Neue',
+    'Helvetica', 'Arial', sans-serif;
 }

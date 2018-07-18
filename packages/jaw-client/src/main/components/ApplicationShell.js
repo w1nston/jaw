@@ -28,6 +28,12 @@ const headerSeparatorStyle = css`
 
 const mainStyle = css`
   padding: 0 0.875rem;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    margin-top: 2.625rem;
+    max-width: 42.5rem;
+  }
 `;
 
 const ApplicationShell = ({ children }) => (
