@@ -14,7 +14,7 @@ const headerStyle = css`
 
 const headerTitleStyle = css`
   color: #385f71;
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   margin-bottom: 0;
 
   @media (min-width: 768px) {
