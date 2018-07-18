@@ -4,12 +4,6 @@ import { css } from 'emotion';
 import ApplicationShell from './ApplicationShell';
 import Home from '../../pages/home/components/Home';
 
-
-
-const mainStyle = css`
-  padding: 0.625rem 1.25rem;
-`;
-
 /*
 const navStyle = css`
   align-items: center;
@@ -29,6 +23,9 @@ const Projects = Loadable({
   loading: Loading,
 });
 
+// TODO: For project> create GraphQL API with https://punkapi.com/documentation/v2
+// IDEA: fetch all beers, to find all food. Then present food first and suggest beer....
+
 TODO
 <nav className={navStyle}>
       <Link to="/">Home</Link>
@@ -40,11 +37,9 @@ TODO
 */
 const App = () => (
   <ApplicationShell>
-    <main className={mainStyle} role="main">
-      <Router>
-        <Home path="/" />
-      </Router>
-    </main>
+    <Router>
+      <Home path="/" />
+    </Router>
   </ApplicationShell>
 );
 
