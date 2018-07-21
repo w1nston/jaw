@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@reach/router';
 import { css } from 'emotion';
 
 const tableStyle = css`
@@ -13,16 +12,19 @@ const DesktopTable = ({ projects }) => (
         <th align="left">Project</th>
         <th align="left">Description</th>
         <th align="left">Demo</th>
+        <th align="left">Source code</th>
       </tr>
     </thead>
     <tbody>
       {projects &&
-        projects.map(({ path, title, description }, index) => (
+        projects.map(({ link, title, description }, index) => (
           <tr key={index}>
             <td>{title}</td>
             <td>{description}</td>
             <td>
-              <Link to={path}>GoTo</Link>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                Live demo
+              </a>
             </td>
           </tr>
         ))}
