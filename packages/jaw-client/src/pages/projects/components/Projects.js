@@ -1,11 +1,19 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { css } from 'emotion';
 import Responsive from '../../../common/components/Responsive';
 import DesktopTable from './DesktopTable';
 import MobileTable from './MobileTable';
 import TabletTable from './TabletTable';
 
+const projectsSectionStyle = css`
+  @media (min-width: 768px) {
+    margin: 20px auto;
+    max-width: 62.5rem;
+  }
+`;
+
 const Projects = ({ projects }) => (
-  <Fragment>
+  <section className={projectsSectionStyle}>
     <h1>Projects</h1>
     <Responsive>
       {width => {
@@ -20,7 +28,7 @@ const Projects = ({ projects }) => (
         return <MobileTable projects={projects} />;
       }}
     </Responsive>
-  </Fragment>
+  </section>
 );
 
 export default Projects;

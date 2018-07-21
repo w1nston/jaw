@@ -8,6 +8,20 @@ import Projects from '../../pages/projects';
 const navStyle = css`
   display: flex;
   justify-content: space-around;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    max-width: 42.5rem;
+  }
+`;
+
+const mainStyle = css`
+  padding: 0 0.875rem;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    margin-top: 2.625rem;
+  }
 `;
 
 const App = () => (
@@ -16,10 +30,12 @@ const App = () => (
       <Link to="/">Home</Link>
       <Link to="/projects">Projects</Link>
     </nav>
-    <Router>
-      <Home path="/" />
-      <Projects path="/projects" />
-    </Router>
+    <main className={mainStyle} role="main">
+      <Router>
+        <Home path="/" />
+        <Projects path="/projects" />
+      </Router>
+    </main>
   </ApplicationShell>
 );
 
