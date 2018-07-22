@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
+const path = require('path');
 const { logger } = require('./logger');
 
 const PORT = process.env.PORT || 4000;
@@ -13,17 +14,19 @@ const createExpressServer = () => {
   app.use(helmet());
   app.use(cors());
   app.use(compression());
+  app.use(express.static('public'));
+
+  const publicDirectory = path.join(__dirname, '../../public');
+  const indexHtml = path.join(publicDirectory, 'index.html');
 
   return {
     start: () => {
       app.get('/', (request, response) => {
-        // TODO: serve static content
-        response.status(200).send();
+        response.status(200).sendFile(indexHtml);
       });
 
       app.get('/projects', (request, response) => {
-        // TODO: serve static content
-        response.status(200).send();
+        response.status(200).sendFile(indexHtml);
       });
 
       const server = app.listen(PORT, () => {
