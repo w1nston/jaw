@@ -8,6 +8,10 @@ const tableStyle = css`
 
 const tableRowStyle = css`
   vertical-align: top;
+
+  &:nth-child(even) {
+    background-color: rgba(242, 246, 208, 0.2);
+  }
 `;
 
 const tableTitleCellStyle = css`
@@ -22,10 +26,6 @@ const tableDescriptionCellStyle = css`
 const tableLiveDemoCellStyle = css`
   padding: 1rem 0;
   width: 10%;
-`;
-
-const tableSourceCodeLinkCellStyle = css`
-  padding: 1rem 0;
 `;
 
 const DesktopTable = ({ projects }) => (
@@ -44,7 +44,7 @@ const DesktopTable = ({ projects }) => (
           <tr key={uuid()} className={tableRowStyle}>
             <td className={tableTitleCellStyle}>{title}</td>
             <td className={tableDescriptionCellStyle}>
-              {description.map(desc => <p>{desc}</p>)}
+              {description.map(desc => <p key={uuid()}>{desc}</p>)}
             </td>
             <td className={tableLiveDemoCellStyle}>
               <a href={link} target="_blank" rel="noopener noreferrer">
@@ -53,17 +53,15 @@ const DesktopTable = ({ projects }) => (
             </td>
             <td>
               {sourceCodeLocations.map(sourceCodeLink => (
-                <tr key={uuid()}>
-                  <td className={tableSourceCodeLinkCellStyle}>
-                    <a
-                      href={sourceCodeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {sourceCodeLink}
-                    </a>
-                  </td>
-                </tr>
+                <p key={uuid()}>
+                  <a
+                    href={sourceCodeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {sourceCodeLink}
+                  </a>
+                </p>
               ))}
             </td>
           </tr>

@@ -2,6 +2,11 @@
   "name": "jaw-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/projects/upsndowns": {
+      "target": "http://localhost:4000"
+    }
+  },
   "dependencies": {
     "@reach/router": "1.1.1",
     "emotion": "9.2.1",

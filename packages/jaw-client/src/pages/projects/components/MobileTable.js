@@ -4,21 +4,24 @@ import uuid from 'uuidv4';
 
 const tableStyle = css`
   border-collapse: collapse;
+  margin: 1.875rem 0;
+
+  &:nth-of-type(even) {
+    background-color: rgba(242, 246, 208, 0.2);
+  }
 `;
 
 const tableColumnStyle = css`
   padding: 0.5rem 0;
 `;
 
-// rgba(242, 246, 208, 0.2)
-
 const MobileTable = ({ projects }) => (
-  <table className={tableStyle}>
-    <thead />
-    <tbody>
-      {projects &&
-        projects.map(({ link, title, description, sourceCodeLocations }) => (
-          <Fragment key={uuid()}>
+  <Fragment>
+    {projects &&
+      projects.map(({ link, title, description, sourceCodeLocations }) => (
+        <table key={uuid()} className={tableStyle}>
+          <thead />
+          <tbody>
             <tr>
               <td className={tableColumnStyle}>
                 <strong>Project:</strong>
@@ -32,7 +35,7 @@ const MobileTable = ({ projects }) => (
             </tr>
             <tr>
               <td colSpan={2} className={tableColumnStyle}>
-                {description.map(desc => <p>{desc}</p>)}
+                {description.map(desc => <p key={uuid()}>{desc}</p>)}
               </td>
             </tr>
             <tr>
@@ -63,10 +66,10 @@ const MobileTable = ({ projects }) => (
                 </td>
               </tr>
             ))}
-          </Fragment>
-        ))}
-    </tbody>
-  </table>
+          </tbody>
+        </table>
+      ))}
+  </Fragment>
 );
 
 export default MobileTable;
