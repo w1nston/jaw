@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
+    "/projects/punk-food": {
+      "target": "http://localhost:4000"
+    },
     "/projects/upsndowns": {
       "target": "http://localhost:4000"
     }
