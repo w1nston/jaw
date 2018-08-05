@@ -18,8 +18,8 @@ const createExpressServer = () => {
 
   const publicDirectory = path.join(__dirname, '../../public');
   const indexHtml = path.join(publicDirectory, 'index.html');
-  const upsndownsHtml = path.join(publicDirectory, 'upsndowns.html');
-  const punkFoodHtml = path.join(publicDirectory, 'punkFood.html');
+  const upsndownsHtml = path.join(`${publicDirectory}/upsndowns`, 'index.html');
+  const punkFoodHtml = path.join(`${publicDirectory}/punkFood`, 'index.html');
 
   return {
     start: () => {
