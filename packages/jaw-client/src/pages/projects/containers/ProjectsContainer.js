@@ -12,7 +12,7 @@ const projects = [
     sourceCodeLocations: ['https://github.com/w1nston/upsndowns'],
   },
   {
-    link: '/projects/punk-food', //'https://punk-food.amsenwallander.se',
+    link: '/projects/punk-food',
     title: 'Punk Food',
     description: [
       'List of dishes, with a link to Google search for a recipe, and suggestion of what beer goes well with the dish.',
