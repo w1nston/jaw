@@ -43,7 +43,7 @@ const MobileTable = ({ projects }) => (
                 <strong>Live demo:</strong>
               </td>
               <td className={tableColumnStyle}>
-                <a href={link} target="_blank" rel="noopener noreferrer">
+                <a href={link}>
                   Here!
                 </a>
               </td>

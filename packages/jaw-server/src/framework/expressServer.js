@@ -18,21 +18,11 @@ const createExpressServer = () => {
 
   const publicDirectory = path.join(__dirname, '../../public');
   const indexHtml = path.join(publicDirectory, 'index.html');
-  const upsndownsHtml = path.join(`${publicDirectory}/upsndowns`, 'index.html');
-  const punkFoodHtml = path.join(`${publicDirectory}/punkFood`, 'index.html');
 
   return {
     start: () => {
       app.get('/', (request, response) => {
         response.status(200).sendFile(indexHtml);
-      });
-
-      app.get('/projects/punk-food', (request, response) => {
-        response.status(200).sendFile(punkFoodHtml);
-      });
-
-      app.get('/projects/upsndowns', (request, response) => {
-        response.status(200).sendFile(upsndownsHtml);
       });
 
       app.get('/projects', (request, response) => {

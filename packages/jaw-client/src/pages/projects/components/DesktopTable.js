@@ -47,7 +47,7 @@ const DesktopTable = ({ projects }) => (
               {description.map(desc => <p key={uuid()}>{desc}</p>)}
             </td>
             <td className={tableLiveDemoCellStyle}>
-              <a href={link} target="_blank" rel="noopener noreferrer">
+              <a href={link}>
                 Here!
               </a>
             </td>
