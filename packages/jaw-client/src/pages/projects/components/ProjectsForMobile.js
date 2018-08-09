@@ -8,10 +8,6 @@ const articleStyle = css`
   &:first-of-type {
     margin-top: 4.125rem;
   }
-
-  &:nth-child(odd) {
-    background-color: rgba(242, 246, 208, 0.2);
-  }
 `;
 
 const liveDemoLinkStyle = css`
