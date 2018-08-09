@@ -15,7 +15,7 @@ const tableRowStyle = css`
 `;
 
 const tableTitleCellStyle = css`
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   width: 12%;
 `;
 
@@ -24,8 +24,12 @@ const tableDescriptionCellStyle = css`
 `;
 
 const tableLiveDemoCellStyle = css`
-  padding: 1rem 0;
-  width: 10%;
+  padding: 1.25rem 0;
+  width: 11%;
+`;
+
+const sourceCodeLinkStyle = css`
+  word-break: break-word;
 `;
 
 const DesktopTable = ({ projects }) => (
@@ -47,14 +51,13 @@ const DesktopTable = ({ projects }) => (
               {description.map(desc => <p key={uuid()}>{desc}</p>)}
             </td>
             <td className={tableLiveDemoCellStyle}>
-              <a href={link}>
-                Here!
-              </a>
+              <a href={link}>Here!</a>
             </td>
             <td>
               {sourceCodeLocations.map(sourceCodeLink => (
                 <p key={uuid()}>
                   <a
+                    className={sourceCodeLinkStyle}
                     href={sourceCodeLink}
                     target="_blank"
                     rel="noopener noreferrer"

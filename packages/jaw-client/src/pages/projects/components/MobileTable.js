@@ -15,6 +15,10 @@ const tableColumnStyle = css`
   padding: 0.5rem 0;
 `;
 
+const sourceCodeLinkStyle = css`
+  word-break: break-word;
+`;
+
 const MobileTable = ({ projects }) => (
   <Fragment>
     {projects &&
@@ -43,9 +47,7 @@ const MobileTable = ({ projects }) => (
                 <strong>Live demo:</strong>
               </td>
               <td className={tableColumnStyle}>
-                <a href={link}>
-                  Here!
-                </a>
+                <a href={link}>Here!</a>
               </td>
             </tr>
             <tr>
@@ -57,6 +59,7 @@ const MobileTable = ({ projects }) => (
               <tr key={uuid()}>
                 <td colSpan={2} className={tableColumnStyle}>
                   <a
+                    className={sourceCodeLinkStyle}
                     href={sourceCodeLink}
                     target="_blank"
                     rel="noopener noreferrer"

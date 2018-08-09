@@ -6,9 +6,12 @@ import MobileTable from './MobileTable';
 import TabletTable from './TabletTable';
 
 const projectsSectionStyle = css`
+  padding-top: 2.5rem;
+
   @media (min-width: 768px) {
     margin: 20px auto;
     max-width: 62.5rem;
+    padding-top: 1rem;
   }
 `;
 
