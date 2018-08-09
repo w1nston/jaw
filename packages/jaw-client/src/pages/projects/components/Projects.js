@@ -1,9 +1,9 @@
 import React from 'react';
 import { css } from 'emotion';
 import Responsive from '../../../common/components/Responsive';
-import DesktopTable from './DesktopTable';
-import MobileTable from './MobileTable';
-import TabletTable from './TabletTable';
+import ForDesktop from './ProjectsForDesktop';
+import ForMobile from './ProjectsForMobile';
+import ForTablet from './ProjectsForTablet';
 
 const projectsSectionStyle = css`
   padding-top: 2.5rem;
@@ -21,14 +21,14 @@ const Projects = ({ projects }) => (
     <Responsive>
       {width => {
         if (width > 991) {
-          return <DesktopTable projects={projects} />;
+          return <ForDesktop projects={projects} />;
         }
 
         if (width > 767) {
-          return <TabletTable projects={projects} />;
+          return <ForTablet projects={projects} />;
         }
 
-        return <MobileTable projects={projects} />;
+        return <ForMobile projects={projects} />;
       }}
     </Responsive>
   </section>

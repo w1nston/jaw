@@ -27,7 +27,7 @@ const sourceCodeLinkStyle = css`
   word-break: break-word;
 `;
 
-const DesktopTable = ({ projects }) => (
+const ForDesktop = ({ projects }) => (
   <table className={tableStyle}>
     <thead>
       <tr>
@@ -69,4 +69,4 @@ const DesktopTable = ({ projects }) => (
   </table>
 );
 
-export default DesktopTable;
+export default ForDesktop;

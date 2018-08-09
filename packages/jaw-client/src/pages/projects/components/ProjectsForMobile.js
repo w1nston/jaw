@@ -30,7 +30,7 @@ const smallHeaderStyle = css`
   margin: 2.75rem 0;
 `;
 
-const MobileTable = ({ projects }) => (
+const ForMobile = ({ projects }) => (
   <Fragment>
     {projects &&
       projects.map(({ link, title, description, sourceCodeLocations }) => (
@@ -59,4 +59,4 @@ const MobileTable = ({ projects }) => (
   </Fragment>
 );
 
-export default MobileTable;
+export default ForMobile;
