@@ -8,17 +8,19 @@ const headerStyle = css`
   @media (min-width: 768px) {
     margin: 0 auto;
     margin-top: 2.625rem;
-    max-width: 42.5rem;
+    width: 62.5rem;
   }
 `;
 
 const headerTitleStyle = css`
   color: #385f71;
   font-size: 1.625rem;
+  margin: 0 auto;
   margin-bottom: 0;
+  width: 19.875rem;
 
   @media (min-width: 768px) {
-    padding 0 .875rem;
+    width: 21.625rem;
   }
 `;
 
