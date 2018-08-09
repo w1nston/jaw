@@ -8,8 +8,10 @@ import Projects from '../../pages/projects';
 const navStyle = css`
   display: flex;
   justify-content: space-around;
+  font-size: 1.5rem;
 
   @media (min-width: 768px) {
+    font-size: 1.25rem;
     margin: 0 auto;
     max-width: 42.5rem;
   }

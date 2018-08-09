@@ -15,17 +15,12 @@ const tableRowStyle = css`
 `;
 
 const tableTitleCellStyle = css`
-  padding: 1.25rem 0;
-  width: 12%;
+  width: 15%;
 `;
 
 const tableDescriptionCellStyle = css`
-  width: 45%;
-`;
-
-const tableLiveDemoCellStyle = css`
-  padding: 1.25rem 0;
-  width: 11%;
+  padding-right: 1.625rem;
+  width: 50%;
 `;
 
 const sourceCodeLinkStyle = css`
@@ -38,7 +33,6 @@ const DesktopTable = ({ projects }) => (
       <tr>
         <th align="left">Project</th>
         <th align="left">Description</th>
-        <th align="left">Live demo</th>
         <th align="left">Source code</th>
       </tr>
     </thead>
@@ -46,12 +40,14 @@ const DesktopTable = ({ projects }) => (
       {projects &&
         projects.map(({ link, title, description, sourceCodeLocations }) => (
           <tr key={uuid()} className={tableRowStyle}>
-            <td className={tableTitleCellStyle}>{title}</td>
+            <td className={tableTitleCellStyle}>
+              <p>{title}</p>
+              <p>
+                <a href={link}>Live demo</a>
+              </p>
+            </td>
             <td className={tableDescriptionCellStyle}>
               {description.map(desc => <p key={uuid()}>{desc}</p>)}
-            </td>
-            <td className={tableLiveDemoCellStyle}>
-              <a href={link}>Here!</a>
             </td>
             <td>
               {sourceCodeLocations.map(sourceCodeLink => (
