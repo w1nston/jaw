@@ -19,7 +19,7 @@ const tableTitleCellStyle = css`
 `;
 
 const tableDescriptionCellStyle = css`
-  padding-right: 1.625rem;
+  padding-right: 1.3rem;
   width: 50%;
 `;
 

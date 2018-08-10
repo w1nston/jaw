@@ -8,21 +8,21 @@ import Projects from '../../pages/projects';
 const navStyle = css`
   display: flex;
   justify-content: space-around;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   @media (min-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0 auto;
-    max-width: 42.5rem;
+    max-width: 34rem;
   }
 `;
 
 const mainStyle = css`
-  padding: 0 0.875rem;
+  padding: 0 0.7rem;
 
   @media (min-width: 768px) {
     margin: 0 auto;
-    margin-top: 2.625rem;
+    margin-top: 2.1rem;
   }
 `;
 

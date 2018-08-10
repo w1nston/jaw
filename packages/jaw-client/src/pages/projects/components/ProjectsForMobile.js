@@ -3,15 +3,15 @@ import { css } from 'emotion';
 import uuid from 'uuidv4';
 
 const articleStyle = css`
-  margin: 6.25rem 0;
+  margin: 5rem 0;
 
   &:first-of-type {
-    margin-top: 4.125rem;
+    margin-top: 3.3rem;
   }
 `;
 
 const liveDemoLinkStyle = css`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 `;
 
 const sourceCodeLinkStyle = css`
@@ -19,11 +19,11 @@ const sourceCodeLinkStyle = css`
 `;
 
 const titleHeaderStyle = css`
-  margin-bottom: 2.125rem
+  margin-bottom: 1.7rem
 `;
 
 const smallHeaderStyle = css`
-  margin: 2.75rem 0;
+  margin: 2.2rem 0;
 `;
 
 const ForMobile = ({ projects }) => (
