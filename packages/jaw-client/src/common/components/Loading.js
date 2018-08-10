@@ -2,10 +2,10 @@ import React from 'react';
 import { css, keyframes } from 'emotion';
 
 const doubleBounceStyle = css`
-  height: 40px;
-  margin: 40px auto;
+  height: 3rem;
+  margin: 3rem auto;
   position: relative;
-  width: 40px;
+  width: 3rem;
 `;
 
 const doubleBounce = keyframes`
