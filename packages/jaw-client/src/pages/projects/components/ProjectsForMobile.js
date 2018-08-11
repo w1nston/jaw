@@ -3,10 +3,10 @@ import { css } from 'emotion';
 import uuid from 'uuidv4';
 
 const articleStyle = css`
-  margin: 5rem 0;
+  margin-bottom: 5rem;
 
   &:first-of-type {
-    margin-top: 3.3rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -18,12 +18,16 @@ const sourceCodeLinkStyle = css`
   word-break: break-word;
 `;
 
-const titleHeaderStyle = css`
-  margin-bottom: 1.7rem
+const projectTitleStyle = css`
+  margin-bottom: 2rem;
 `;
 
-const smallHeaderStyle = css`
-  margin: 2.2rem 0;
+const descriptionTitleStyle = css`
+  margin-bottom: 2rem;
+`;
+
+const descriptionStyle = css`
+  margin: 2rem 0;
 `;
 
 const ForMobile = ({ projects }) => (
@@ -31,13 +35,13 @@ const ForMobile = ({ projects }) => (
     {projects &&
       projects.map(({ link, title, description, sourceCodeLocations }) => (
         <article className={articleStyle} key={uuid()}>
-          <h2 className={titleHeaderStyle}>{title}</h2>
+          <h2 className={projectTitleStyle}>{title}</h2>
           <a className={liveDemoLinkStyle} href={link}>
             Live demo
           </a>
-          <h3 className={smallHeaderStyle}>Description</h3>
-          {description.map(desc => <p key={uuid()}>{desc}</p>)}
-          <h3 className={smallHeaderStyle}>Source code</h3>
+          <h3 className={descriptionTitleStyle}>Description</h3>
+          {description.map(desc => <p className={descriptionStyle} key={uuid()}>{desc}</p>)}
+          <h3>Source code</h3>
           {sourceCodeLocations.map(sourceCodeLink => (
             <p key={uuid()}>
               <a
