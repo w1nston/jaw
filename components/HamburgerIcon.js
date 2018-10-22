@@ -39,7 +39,7 @@ const hamburgerStyle = css`
     }
   }
 
-  &.isActive {
+  &.active {
     .${lineOneStyle} {
       transform: translateY(10px) translateX(0) rotate(45deg);
     }
@@ -65,35 +65,15 @@ const lineStyle = css`
   width: 2.3rem;
 `;
 
-const toggleActive = state => ({ active: !state.active });
-
-class HamburgerIcon extends Component {
-  state = { active: false };
-
-  handleClick = () => {
-    const { onClick } = this.props;
-    if (typeof onClick === 'function') {
-      this.setState(toggleActive, onClick);
-    } else {
-      this.setState(toggleActive);
-    }
-  };
-
-  render() {
-    const { active } = this.state;
-    const { className } = this.props;
-
-    return (
-      <button
-        className={cx(hamburgerStyle, className, active ? 'isActive' : null)}
-        onClick={this.handleClick}
-      >
-        <i className={`${lineStyle} ${lineOneStyle}`} />
-        <i className={`${lineStyle} ${lineTwoStyle}`} />
-        <i className={`${lineStyle} ${lineThreeStyle}`} />
-      </button>
-    );
-  }
-}
+const HamburgerIcon = ({ active, className, onClick }) => (
+  <button
+    className={cx(hamburgerStyle, className, active ? 'active' : null)}
+    onClick={onClick}
+  >
+    <i className={`${lineStyle} ${lineOneStyle}`} />
+    <i className={`${lineStyle} ${lineTwoStyle}`} />
+    <i className={`${lineStyle} ${lineThreeStyle}`} />
+  </button>
+);
 
 export default HamburgerIcon;

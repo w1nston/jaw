@@ -61,6 +61,7 @@ class Header extends Component {
       <section className={headerContainerStyle}>
         <header className={headerStyle}>
           <HamburgerIcon
+            active={menuIsOpen}
             className={hamburgerStyle}
             onClick={this.handleToggleMenu}
           />
