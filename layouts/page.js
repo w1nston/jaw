@@ -1,5 +1,6 @@
 import React from 'react';
 import { css, cx } from 'react-emotion';
+import Header from '../components/Header';
 
 const containerStyle = css`
   padding: 0.5rem 0.8rem;
@@ -14,6 +15,7 @@ const mainContentStyle = css`
 
 const Page = ({ children, className }) => (
   <section className={cx(className, containerStyle)}>
+    <Header />
     <main role="main" className={mainContentStyle}>
       {children}
     </main>
