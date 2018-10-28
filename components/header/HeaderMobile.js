@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Router from 'next/router';
-import { css } from 'react-emotion';
+import { css, cx } from 'react-emotion';
 import Logo from './Logo';
 import HamburgerIcon from './HamburgerIcon';
 import MenuLink from './MenuLink';
@@ -27,15 +27,21 @@ const logoStyle = css`
 `;
 
 const navStyle = css`
-  background: hsla(360, 100%, 100%, 1);
   bottom: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 0;
   left: 0;
+  overflow: hidden;
   position: absolute;
   right: 0;
   top: 3.75rem;
+
+  &.open {
+    background: hsla(360, 100%, 100%, 1);
+    height: 100vh;
+    z-index: 1;
+  }
 `;
 
 const linkStyle = css`
@@ -67,34 +73,21 @@ class Header extends Component {
           />
           <Logo className={logoStyle} />
         </header>
-        {menuIsOpen
-          ? createPortal(
-              <nav className={navStyle}>
-                <MenuLink
-                  className={linkStyle}
-                  href="/"
-                  onClick={this.closeMenu}
-                >
-                  Home
-                </MenuLink>
-                <MenuLink
-                  className={linkStyle}
-                  href="/blog"
-                  onClick={this.closeMenu}
-                >
-                  Blog
-                </MenuLink>
-                <MenuLink
-                  className={linkStyle}
-                  href="/projects"
-                  onClick={this.closeMenu}
-                >
-                  Projects
-                </MenuLink>
-              </nav>,
-              document.getElementsByTagName('body')[0]
-            )
-          : null}
+        <nav className={cx(navStyle, menuIsOpen ? 'open' : '')}>
+          <MenuLink className={linkStyle} href="/" onClick={this.closeMenu}>
+            Home
+          </MenuLink>
+          <MenuLink className={linkStyle} href="/blog" onClick={this.closeMenu}>
+            Blog
+          </MenuLink>
+          <MenuLink
+            className={linkStyle}
+            href="/projects"
+            onClick={this.closeMenu}
+          >
+            Projects
+          </MenuLink>
+        </nav>
       </section>
     );
   }
