@@ -4,9 +4,9 @@ import Link from 'next/link';
 import Logo from './Logo';
 
 const headerStyle = css`
-  border-bottom: 1px solid #333;
+  border-bottom: .05rem solid #333;
   margin: 0 auto;
-  width: 33rem;
+  width: 40rem;
 `;
 
 const navStyle = css`
@@ -19,8 +19,8 @@ const linkStyle = css`
   text-decoration: none;
 
   .line {
-    border-left: 1px solid #333;
-    bottom: -18px;
+    border-left: .05rem solid #333;
+    bottom: -.9rem;
     height: 0;
     left: 50%;
     position: absolute;
@@ -29,7 +29,7 @@ const linkStyle = css`
 
   &:hover {
     .line {
-      height: 20px;
+      height: 1rem;
       transition: height 0.4s;
     }
   }

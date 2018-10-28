@@ -31,6 +31,7 @@ const navStyle = css`
   bottom: 0;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   left: 0;
   position: absolute;
   right: 0;
@@ -51,7 +52,7 @@ class Header extends Component {
 
   closeMenu = () => {
     this.setState({ menuIsOpen: false });
-  }
+  };
 
   render() {
     const { menuIsOpen } = this.state;
@@ -69,13 +70,25 @@ class Header extends Component {
         {menuIsOpen
           ? createPortal(
               <nav className={navStyle}>
-                <MenuLink className={linkStyle} href="/" onClick={this.closeMenu}>
+                <MenuLink
+                  className={linkStyle}
+                  href="/"
+                  onClick={this.closeMenu}
+                >
                   Home
                 </MenuLink>
-                <MenuLink className={linkStyle} href="/blog" onClick={this.closeMenu}>
+                <MenuLink
+                  className={linkStyle}
+                  href="/blog"
+                  onClick={this.closeMenu}
+                >
                   Blog
                 </MenuLink>
-                <MenuLink className={linkStyle} href="/projects" onClick={this.closeMenu}>
+                <MenuLink
+                  className={linkStyle}
+                  href="/projects"
+                  onClick={this.closeMenu}
+                >
                   Projects
                 </MenuLink>
               </nav>,
