@@ -1,5 +1,5 @@
 import React from 'react';
-import Responsive, { MOBILE, TABLET } from './Responsive';
+import Responsive, { MOBILE, TABLET } from '../Responsive';
 import HeaderMobile from './HeaderMobile';
 import HeaderDesktop from './HeaderDesktop';
 import HeaderTablet from './HeaderTablet';

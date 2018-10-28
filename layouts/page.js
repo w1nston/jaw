@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, cx } from 'react-emotion';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 
 const containerStyle = css`
   padding: 0.5rem 0.8rem;
