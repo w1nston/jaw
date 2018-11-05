@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { css } from 'react-emotion';
 
 const headerStyle = css`
@@ -6,9 +6,9 @@ const headerStyle = css`
 `;
 
 const Projects = () => (
-  <Fragment>
+  <>
     <h1 className={headerStyle}>Projects</h1>
-  </Fragment>
+  </>
 );
 
 export default Projects;

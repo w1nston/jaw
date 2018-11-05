@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { css } from 'react-emotion';
 
 const headerStyle = css`
@@ -6,9 +6,9 @@ const headerStyle = css`
 `;
 
 const HomePage = () => (
-  <Fragment>
+  <>
     <h1 className={headerStyle}>Home</h1>
-  </Fragment>
+  </>
 );
 
 export default HomePage;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -76,51 +76,55 @@ const linkStyle = css`
   text-decoration: none;
 `;
 
-class Header extends Component {
-  state = { hasBeenOpened: false, menuIsOpen: false };
+const HeaderMobile = props => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [menuHasBeenOpened, setMenuHasBeenOpened] = useState(false);
 
-  handleToggleMenu = () => {
-    // TODO: Optimize since hasBeenOpened only changes once...
-    this.setState(state => ({ hasBeenOpened: true, menuIsOpen: !state.menuIsOpen }));
+  const handleToggleMenu = () => {
+    setMenuIsOpen(!menuIsOpen);
+    if (!menuHasBeenOpened) {
+      setMenuHasBeenOpened(true);
+    }
   };
 
-  closeMenu = () => {
-    this.setState({ menuIsOpen: false });
+  const closeMenu = () => {
+    if (menuIsOpen) {
+      setMenuIsOpen(false);
+    }
   };
 
-  render() {
-    const { hasBeenOpened, menuIsOpen } = this.state;
+  return (
+    <section className={headerContainerStyle}>
+      <header className={headerStyle}>
+        <HamburgerIcon
+          active={menuIsOpen}
+          className={hamburgerStyle}
+          onClick={handleToggleMenu}
+        />
+        <Logo className={logoStyle} />
+      </header>
+      <nav
+        className={cx(
+          navStyle,
+          menuIsOpen ? 'open' : menuHasBeenOpened ? 'close' : ''
+        )}
+      >
+        <MenuLink className={linkStyle} href="/" onClick={closeMenu}>
+          Home
+        </MenuLink>
+        <MenuLink className={linkStyle} href="/blog" onClick={closeMenu}>
+          Blog
+        </MenuLink>
+        <MenuLink
+          className={linkStyle}
+          href="/projects"
+          onClick={closeMenu}
+        >
+          Projects
+        </MenuLink>
+      </nav>
+    </section>
+  );
+};
 
-    return (
-      <section className={headerContainerStyle}>
-        <header className={headerStyle}>
-          <HamburgerIcon
-            active={menuIsOpen}
-            className={hamburgerStyle}
-            onClick={this.handleToggleMenu}
-          />
-          <Logo className={logoStyle} />
-        </header>
-        <nav className={cx(navStyle, menuIsOpen ? 'open' : (
-          hasBeenOpened ? 'close' : ''
-        ))}>
-          <MenuLink className={linkStyle} href="/" onClick={this.closeMenu}>
-            Home
-          </MenuLink>
-          <MenuLink className={linkStyle} href="/blog" onClick={this.closeMenu}>
-            Blog
-          </MenuLink>
-          <MenuLink
-            className={linkStyle}
-            href="/projects"
-            onClick={this.closeMenu}
-          >
-            Projects
-          </MenuLink>
-        </nav>
-      </section>
-    );
-  }
-}
-
-export default Header;
+export default HeaderMobile;
