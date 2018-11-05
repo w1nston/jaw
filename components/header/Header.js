@@ -1,11 +1,9 @@
 import React from 'react';
 import { useWindowSize } from '../../hooks/windowHooks';
+import { MOBILE, TABLET } from '../../utils/constants';
 import HeaderMobile from './HeaderMobile';
 import HeaderDesktop from './HeaderDesktop';
 import HeaderTablet from './HeaderTablet';
-
-export const MOBILE = 767;
-export const TABLET = 990;
 
 const Header = () => {
   const { width } = useWindowSize();
