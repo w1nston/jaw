@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "react-emotion";
+import uuid from 'uuidv4';
 
 const articleStyle = css`
   margin-bottom: 4rem;
@@ -16,7 +17,7 @@ const Project = ({ description, link, sourceCodeLocations, title }) => (
     <h2>{title}</h2>
     <a href={link}>Live demo</a>
     {description.map(section => (
-      <p>{section}</p>
+      <p key={uuid()}>{section}</p>
     ))}
     <h3>Source</h3>
     <ul className={sourceCodeListStyle}>

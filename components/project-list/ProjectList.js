@@ -1,10 +1,11 @@
 import React from 'react';
 import Project from './Project';
+import uuid from 'uuidv4';
 
 const ProjectList = ({ projects }) => (
   <>
     {projects.map(project => (
-      <Project key={project.title} {...project} />
+      <Project key={uuid()} {...project} />
     ))}
   </>
 );
