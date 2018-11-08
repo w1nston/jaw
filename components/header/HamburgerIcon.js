@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { css, cx } from 'react-emotion';
 
 const lineOneStyle = css`

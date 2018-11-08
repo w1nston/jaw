@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { createPortal } from "react-dom";
-import Link from "next/link";
-import Router from "next/router";
 import { css, cx, keyframes } from "react-emotion";
 import Logo from "./Logo";
 import HamburgerIcon from "./HamburgerIcon";

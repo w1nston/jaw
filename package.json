@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "next build",
+    "lint": "eslint components/**/*.js hooks/**/*.js layouts/**/*.js pages/*.js utils/**/*.js",
     "start": "next start",
     "start:dev": "next",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +29,13 @@
     "uuidv4": "^2.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.8.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
     "jest-dom": "^2.1.0",
     "prettier": "^1.14.3",
