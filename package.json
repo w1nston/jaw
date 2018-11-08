@@ -1,5 +1,44 @@
 {
-	"devDependencies": {
-		"lerna": "2.11.0"
-	}
+  "name": "jaw",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "next build",
+    "lint": "eslint components/**/*.js hooks/**/*.js layouts/**/*.js pages/*.js utils/**/*.js",
+    "start": "next start",
+    "start:dev": "next",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w1nston/jaw.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w1nston/jaw/issues"
+  },
+  "dependencies": {
+    "emotion": "^9.2.12",
+    "emotion-server": "^9.2.12",
+    "next": "^7.0.2",
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0",
+    "react-emotion": "^9.2.12",
+    "uuidv4": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.8.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "jest-dom": "^2.1.0",
+    "prettier": "^1.14.3",
+    "react-testing-library": "^5.2.0"
+  }
 }
