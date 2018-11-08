@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { css, cx, keyframes } from "react-emotion";
+import { css, cx } from "react-emotion";
 import Logo from "./Logo";
 import HamburgerIcon from "./HamburgerIcon";
 import MenuLink from "./MenuLink";
@@ -23,28 +23,11 @@ const logoStyle = css`
   align-self: center;
 `;
 
-const openMenuKeyframes = keyframes`
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100vh;
-  }
-`;
-
-const closeMenuKeyframes = keyframes`
-  0% {
-    height: 100vh;
-  }
-  100% {
-    heigth: 0;
-  }
-`;
-
 const navStyle = css`
   bottom: 0;
   display: flex;
   flex-direction: column;
+  height: 0;
   left: 0;
   overflow: hidden;
   position: absolute;
@@ -52,18 +35,18 @@ const navStyle = css`
   top: 3.75rem;
 
   &.close {
-    animation-duration: 1s;
-    animation-name: ${closeMenuKeyframes};
-    animation-timing-function: ease-out;
+    background: hsla(360, 100%, 100%, 1);
+    height: 0;
+    transition-property: height;
+    transition-duration: 0.5s;
     z-index: 1;
   }
 
   &.open {
-    animation-duration: 1s;
-    animation-name: ${openMenuKeyframes};
-    animation-timing-function: ease-in;
     background: hsla(360, 100%, 100%, 1);
     height: 100vh;
+    transition-property: height;
+    transition-duration: 0.8s;
     z-index: 1;
   }
 `;
