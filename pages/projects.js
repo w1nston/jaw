@@ -1,7 +1,5 @@
 import React from 'react';
 import { css } from 'react-emotion';
-import { useWindowSize } from '../hooks/windowHooks';
-import { MOBILE, TABLET } from '../utils/constants';
 import ProjectList from '../components/project-list/ProjectList';
 
 const projectData = [
@@ -30,14 +28,15 @@ const projectData = [
 
 const headerStyle = css`
   font-size: 1.9rem;
+  margin-bottom: 4.5rem;
 `;
 
 const Projects = ({ projects }) => {
   return (
-    <>
+    <section>
       <h1 className={headerStyle}>Projects</h1>
       <ProjectList projects={projects} />
-    </>
+    </section>
   );
 };
 

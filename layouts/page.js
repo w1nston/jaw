@@ -9,7 +9,7 @@ const containerStyle = css`
 const mainContentStyle = css`
   @media (min-width: 768px) {
     margin: 0 auto;
-    width: 33rem;
+    width: 50rem;
   }
 `;
 

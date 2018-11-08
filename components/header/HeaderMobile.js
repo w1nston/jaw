@@ -1,11 +1,11 @@
-import React, { Component, useState } from 'react';
-import { createPortal } from 'react-dom';
-import Link from 'next/link';
-import Router from 'next/router';
-import { css, cx, keyframes } from 'react-emotion';
-import Logo from './Logo';
-import HamburgerIcon from './HamburgerIcon';
-import MenuLink from './MenuLink';
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
+import Link from "next/link";
+import Router from "next/router";
+import { css, cx, keyframes } from "react-emotion";
+import Logo from "./Logo";
+import HamburgerIcon from "./HamburgerIcon";
+import MenuLink from "./MenuLink";
 
 const headerContainerStyle = css`
   display: flex;
@@ -55,8 +55,8 @@ const navStyle = css`
   top: 3.75rem;
 
   &.close {
-    animation-duration: 2s;
-    animation-name: ${closeMenuKeyframes}
+    animation-duration: 1s;
+    animation-name: ${closeMenuKeyframes};
     animation-timing-function: ease-out;
     z-index: 1;
   }
@@ -106,20 +106,13 @@ const HeaderMobile = props => {
       <nav
         className={cx(
           navStyle,
-          menuIsOpen ? 'open' : menuHasBeenOpened ? 'close' : ''
+          menuIsOpen ? "open" : menuHasBeenOpened ? "close" : ""
         )}
       >
         <MenuLink className={linkStyle} href="/" onClick={closeMenu}>
           Home
         </MenuLink>
-        <MenuLink className={linkStyle} href="/blog" onClick={closeMenu}>
-          Blog
-        </MenuLink>
-        <MenuLink
-          className={linkStyle}
-          href="/projects"
-          onClick={closeMenu}
-        >
+        <MenuLink className={linkStyle} href="/projects" onClick={closeMenu}>
           Projects
         </MenuLink>
       </nav>

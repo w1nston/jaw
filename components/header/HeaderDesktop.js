@@ -1,17 +1,17 @@
-import React from 'react';
-import { css } from 'react-emotion';
-import Link from 'next/link';
-import Logo from './Logo';
+import React from "react";
+import { css } from "react-emotion";
+import Link from "next/link";
+import Logo from "./Logo";
 
 const headerStyle = css`
-  border-bottom: .05rem solid #333;
+  border-bottom: 0.05rem solid #333;
   margin: 0 auto;
-  width: 40rem;
+  max-width: 60rem;
 `;
 
 const navStyle = css`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const linkStyle = css`
@@ -19,8 +19,8 @@ const linkStyle = css`
   text-decoration: none;
 
   .line {
-    border-left: .05rem solid #333;
-    bottom: -.9rem;
+    border-left: 0.05rem solid #333;
+    bottom: -0.9rem;
     height: 0;
     left: 50%;
     position: absolute;
@@ -45,12 +45,6 @@ const HeaderDesktop = () => (
       <Link href="/">
         <a className={linkStyle}>
           Home
-          <i className="line" />
-        </a>
-      </Link>
-      <Link href="/blog">
-        <a className={linkStyle}>
-          Blog
           <i className="line" />
         </a>
       </Link>
