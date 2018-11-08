@@ -27,6 +27,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Fira+Sans|Montserrat"
             rel="stylesheet"
           />
+          <link rel="shortcut icon" href="/static/favicon.png"></link>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
         <body>
