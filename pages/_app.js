@@ -2,7 +2,6 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import { hydrate, injectGlobal } from 'react-emotion';
 import Page from '../layouts/page';
-import Meta from '../components/Meta';
 
 // Adds server generated styles to emotion cache.
 // '__NEXT_DATA__.ids' is set in '_document.js'
@@ -54,7 +53,6 @@ class JAWApp extends App {
 
     return (
       <Container>
-        <Meta />
         <Page>
           <Component {...pageProps} />
         </Page>
