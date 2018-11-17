@@ -8,7 +8,7 @@
     "lint": "eslint components/**/*.js hooks/**/*.js layouts/**/*.js pages/*.js utils/**/*.js",
     "start": "next start",
     "start:dev": "next",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,12 @@
     "uuidv4": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-transform-react-jsx": "^7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-next": "^1.2.0",
     "eslint": "^5.8.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-plugin-flowtype": "^2.50.3",
@@ -39,6 +44,7 @@
     "jest": "^23.6.0",
     "jest-dom": "^2.1.0",
     "prettier": "^1.14.3",
-    "react-testing-library": "^5.2.0"
+    "react-testing-library": "^5.2.0",
+    "regenerator-runtime": "^0.12.1"
   }
 }

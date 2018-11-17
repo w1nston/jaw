@@ -1,5 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import Head from 'next/head';
 import { hydrate, injectGlobal } from 'react-emotion';
 import Page from '../layouts/page';
 
@@ -53,6 +54,9 @@ class JAWApp extends App {
 
     return (
       <Container>
+        <Head>
+          <title>Jonas Amsen-Wallander</title>
+        </Head>
         <Page>
           <Component {...pageProps} />
         </Page>

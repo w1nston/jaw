@@ -1,5 +1,5 @@
-import React from "react";
-import { css } from "react-emotion";
+import React from 'react';
+import { css } from 'react-emotion';
 import uuid from 'uuidv4';
 
 const articleStyle = css`
@@ -14,13 +14,15 @@ const sourceCodeListStyle = css`
 
 const Project = ({ description, link, sourceCodeLocations, title }) => (
   <article className={articleStyle}>
-    <h2>{title}</h2>
+    <h2 data-testid="projects-projectTitle-h2">{title}</h2>
     <a href={link}>Live demo</a>
-    {description.map(section => (
-      <p key={uuid()}>{section}</p>
-    ))}
-    <h3>Source</h3>
-    <ul className={sourceCodeListStyle}>
+    <div data-testid="projects-description-div">
+      {description.map(section => (
+        <p key={uuid()}>{section}</p>
+      ))}
+    </div>
+    <h3 data-testid="projects-sourceCodeTitle-h3">Source</h3>
+    <ul data-testid="projects-sourceCodeList-ul" className={sourceCodeListStyle}>
       {sourceCodeLocations.map(source => (
         <li key={source}>
           <a href={source}>{source}</a>

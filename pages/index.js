@@ -6,9 +6,11 @@ const headerStyle = css`
 `;
 
 const HomePage = () => (
-  <>
-    <h1 className={headerStyle}>Home</h1>
-  </>
+  <section>
+    <h1 data-testid="homePage-title-h1" className={headerStyle}>
+      Home
+    </h1>
+  </section>
 );
 
 export default HomePage;

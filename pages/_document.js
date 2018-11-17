@@ -29,7 +29,6 @@ export default class JAWDocument extends Document {
           />
           <link rel="shortcut icon" href="/static/favicon.png"></link>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
-          <title>Jonas Amsen-Wallander</title>
         </Head>
         <body>
           <Main />

@@ -31,10 +31,10 @@ const headerStyle = css`
   margin-bottom: 4.5rem;
 `;
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects = [] }) => {
   return (
     <section>
-      <h1 className={headerStyle}>Projects</h1>
+      <h1 data-testid="projects-title-h1" className={headerStyle}>Projects</h1>
       <ProjectList projects={projects} />
     </section>
   );
