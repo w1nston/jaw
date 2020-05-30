@@ -1,26 +1,23 @@
 {
   "name": "jaw",
-  "version": "2.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "next build",
-    "lint": "eslint components/**/*.js hooks/**/*.js layouts/**/*.js pages/*.js utils/**/*.js",
-    "start": "next start",
-    "start:dev": "next",
-    "test": "jest"
-  },
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w1nston/jaw.git"
   },
-  "author": "",
+  "author": "Jonas Amsen-Wallander",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/w1nston/jaw/issues"
   },
-  "dependencies": {
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "devDependencies": {
+  "dependencies": {
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   }
 }
