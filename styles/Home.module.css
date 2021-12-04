@@ -1,1 +1,8 @@
-/* TODO: just add css */
+.header {
+  background-color: #00ffbd; /* TODO: nicer color ofc... */
+  width: 100vw;
+  height: 4rem;
+  box-shadow: 0 -0.1rem 0.6rem 0 #333;
+}
+
+/* logo color: #0042ff */
