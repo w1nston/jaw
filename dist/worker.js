@@ -10853,11 +10853,32 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
     }
   });
 
+  // node_modules/tiny-invariant/dist/tiny-invariant.cjs.js
+  var require_tiny_invariant_cjs = __commonJS({
+    "node_modules/tiny-invariant/dist/tiny-invariant.cjs.js"(exports, module) {
+      "use strict";
+      var isProduction = false;
+      var prefix = "Invariant failed";
+      function invariant2(condition, message) {
+        if (condition) {
+          return;
+        }
+        if (isProduction) {
+          throw new Error(prefix);
+        }
+        var provided = typeof message === "function" ? message() : message;
+        var value = provided ? prefix + ": " + provided : prefix;
+        throw new Error(value);
+      }
+      module.exports = invariant2;
+    }
+  });
+
   // build/assets.json
   var require_assets = __commonJS({
     "build/assets.json"(exports, module) {
       module.exports = {
-        version: "ecb3dceb",
+        version: "c19da3b9",
         entry: {
           module: "/build/entry.client-HL6ON5O2.js",
           imports: [
@@ -10869,11 +10890,21 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           root: {
             id: "root",
             path: "",
-            module: "/build/root-ZEI7SC5R.js",
+            module: "/build/root-AFMGQKQB.js",
             hasAction: false,
             hasLoader: false,
             hasCatchBoundary: true,
             hasErrorBoundary: true
+          },
+          "routes/about": {
+            id: "routes/about",
+            parentId: "root",
+            path: "about",
+            module: "/build/routes/about-UJURLDHH.js",
+            hasAction: false,
+            hasLoader: false,
+            hasCatchBoundary: false,
+            hasErrorBoundary: false
           },
           "routes/index": {
             id: "routes/index",
@@ -10889,9 +10920,19 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
             id: "routes/now",
             parentId: "root",
             path: "now",
-            module: "/build/routes/now-O2PDUMAN.js",
+            module: "/build/routes/now-GO2CDBNL.js",
             hasAction: false,
             hasLoader: false,
+            hasCatchBoundary: false,
+            hasErrorBoundary: false
+          },
+          "routes/posts/$slug": {
+            id: "routes/posts/$slug",
+            parentId: "root",
+            path: "posts/:slug",
+            module: "/build/routes/posts/$slug-6GV3A3EJ.js",
+            hasAction: false,
+            hasLoader: true,
             hasCatchBoundary: false,
             hasErrorBoundary: false
           },
@@ -10900,14 +10941,14 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
             parentId: "root",
             path: "posts",
             index: true,
-            module: "/build/routes/posts/index-GUT7JIV3.js",
+            module: "/build/routes/posts/index-6OFSKWHA.js",
             hasAction: false,
             hasLoader: true,
             hasCatchBoundary: false,
             hasErrorBoundary: false
           }
         },
-        url: "/build/manifest-ECB3DCEB.js"
+        url: "/build/manifest-C19DA3B9.js"
       };
     }
   });
@@ -10969,7 +11010,7 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
         links: () => links
       });
       var import_remix2 = __toModule2((init_browser3(), browser_exports));
-      var global_default = "/build/_assets/global-4BDZGY2F.css";
+      var global_default = "/build/_assets/global-JAJXECNN.css";
       var dark_default = "/build/_assets/dark-APYDFYJA.css";
       var links = () => {
         return [
@@ -10981,7 +11022,7 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           },
           {
             rel: "stylesheet",
-            href: "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+            href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap"
           },
           { rel: "stylesheet", href: global_default },
           {
@@ -11039,8 +11080,13 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
         }, /* @__PURE__ */ React2.createElement("ul", {
           className: "navigation__list"
         }, /* @__PURE__ */ React2.createElement("li", null, /* @__PURE__ */ React2.createElement(import_remix2.Link, {
+          className: "navigation__link",
+          to: "/about"
+        }, "About")), /* @__PURE__ */ React2.createElement("li", null, /* @__PURE__ */ React2.createElement(import_remix2.Link, {
+          className: "navigation__link",
           to: "/now"
         }, "Now")), /* @__PURE__ */ React2.createElement("li", null, /* @__PURE__ */ React2.createElement(import_remix2.Link, {
+          className: "navigation__link",
           to: "/posts"
         }, "Blog")), /* @__PURE__ */ React2.createElement("li", null, /* @__PURE__ */ React2.createElement(import_remix2.Link, {
           className: "navigation__logoLink",
@@ -11072,13 +11118,31 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           d: "M1723.283,1167.308l-620.478,0.017c-3.301,0-6.185,3.124-6.185,6.501v496.035\n	c0,3.594,2.914,6.504,6.501,6.521c171.79,3.152,310.088,143.389,310.088,315.924c0,172.48-137.371,315.525-309.302,315.525\n	c-3.439,0-7.277,3.418-7.281,6.896l-0.006,124.922c0,3.586,2.938,6.49,6.519,6.516c58.275-0.047,149.728-1.346,255.271-36.527\n	c270.924-88.27,371.389-353.109,371.389-639.254v-596.559C1729.801,1170.223,1726.885,1167.308,1723.283,1167.308z"
         }));
       }
+      var slug_exports = {};
+      __export2(slug_exports, {
+        default: () => slug_default,
+        loader: () => loader
+      });
+      var import_remix3 = __toModule2((init_browser3(), browser_exports));
+      var import_tiny_invariant = __toModule2(require_tiny_invariant_cjs());
+      var loader = async ({ params }) => {
+        (0, import_tiny_invariant.default)(params.slug, "expected params.slug");
+        return params.slug;
+      };
+      function PostSlug() {
+        const slug = (0, import_remix3.useLoaderData)();
+        return /* @__PURE__ */ React2.createElement("div", {
+          className: "content__container"
+        }, /* @__PURE__ */ React2.createElement("h1", null, "Title"));
+      }
+      var slug_default = PostSlug;
       var posts_exports = {};
       __export2(posts_exports, {
         default: () => posts_default,
         links: () => links2,
-        loader: () => loader
+        loader: () => loader2
       });
-      var import_remix3 = __toModule2((init_browser3(), browser_exports));
+      var import_remix4 = __toModule2((init_browser3(), browser_exports));
       function getPosts() {
         return Promise.resolve([
           {
@@ -11095,7 +11159,7 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           }
         ]);
       }
-      var blog_default = "/build/_assets/blog-VKIALGK7.css";
+      var blog_default = "/build/_assets/blog-5I7D4WQY.css";
       var links2 = () => {
         return [
           { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -11111,33 +11175,43 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           { rel: "stylesheet", href: blog_default }
         ];
       };
-      async function loader() {
+      async function loader2() {
         const posts = await getPosts();
         return posts;
       }
       function Posts() {
-        const posts = (0, import_remix3.useLoaderData)();
+        const posts = (0, import_remix4.useLoaderData)();
         return /* @__PURE__ */ React2.createElement("div", {
-          className: "blog__container"
+          className: "content__container"
         }, /* @__PURE__ */ React2.createElement("h1", null, "Posts"), /* @__PURE__ */ React2.createElement("ul", {
           className: "blog__postList"
         }, posts.map((post) => /* @__PURE__ */ React2.createElement("li", {
           key: post.slug
-        }, /* @__PURE__ */ React2.createElement(import_remix3.Link, {
+        }, /* @__PURE__ */ React2.createElement(import_remix4.Link, {
           to: post.slug
         }, post.title), /* @__PURE__ */ React2.createElement("div", {
           className: "blog__postLine"
         })))));
       }
       var posts_default = Posts;
+      var about_exports = {};
+      __export2(about_exports, {
+        default: () => about_default
+      });
+      function AboutPage() {
+        return /* @__PURE__ */ React2.createElement("div", {
+          className: "content__container"
+        }, /* @__PURE__ */ React2.createElement("h1", null, "About me"));
+      }
+      var about_default = AboutPage;
       var routes_exports = {};
       __export2(routes_exports, {
         default: () => Index,
-        loader: () => loader2,
+        loader: () => loader3,
         meta: () => meta
       });
-      var import_remix4 = __toModule2((init_browser3(), browser_exports));
-      var loader2 = () => {
+      var import_remix5 = __toModule2((init_browser3(), browser_exports));
+      var loader3 = () => {
         let data = {
           resources: [
             {
@@ -11168,7 +11242,7 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
             }
           ]
         };
-        return (0, import_remix4.json)(data);
+        return (0, import_remix5.json)(data);
       };
       var meta = () => {
         return {
@@ -11177,7 +11251,7 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
         };
       };
       function Index() {
-        let data = (0, import_remix4.useLoaderData)();
+        let data = (0, import_remix5.useLoaderData)();
         return /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement("h1", null, "Woop"));
       }
       var now_exports = {};
@@ -11185,7 +11259,9 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
         default: () => now_default
       });
       function NowPage() {
-        return /* @__PURE__ */ React2.createElement("h1", null, "Now");
+        return /* @__PURE__ */ React2.createElement("div", {
+          className: "content__container"
+        }, /* @__PURE__ */ React2.createElement("h1", null, "Now"));
       }
       var now_default = NowPage;
       var import_assets = __toModule2(require_assets());
@@ -11199,6 +11275,14 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           caseSensitive: void 0,
           module: root_exports
         },
+        "routes/posts/$slug": {
+          id: "routes/posts/$slug",
+          parentId: "root",
+          path: "posts/:slug",
+          index: void 0,
+          caseSensitive: void 0,
+          module: slug_exports
+        },
         "routes/posts/index": {
           id: "routes/posts/index",
           parentId: "root",
@@ -11206,6 +11290,14 @@ window.__remixRouteModules = {${matches.map((match, index) => `${JSON.stringify(
           index: true,
           caseSensitive: void 0,
           module: posts_exports
+        },
+        "routes/about": {
+          id: "routes/about",
+          parentId: "root",
+          path: "about",
+          index: void 0,
+          caseSensitive: void 0,
+          module: about_exports
         },
         "routes/index": {
           id: "routes/index",

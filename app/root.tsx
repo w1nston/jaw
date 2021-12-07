@@ -23,7 +23,7 @@ export let links: LinksFunction = () => {
     },
     {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap',
     },
     { rel: 'stylesheet', href: globalStylesUrl },
     {
@@ -134,10 +134,19 @@ function Layout({ children }: { children: React.ReactNode }) {
         <nav aria-label="Main navigation">
           <ul className="navigation__list">
             <li>
-              <Link to="/now">Now</Link>
+              <Link className="navigation__link" to="/about">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/posts">Blog</Link>
+              <Link className="navigation__link" to="/now">
+                Now
+              </Link>
+            </li>
+            <li>
+              <Link className="navigation__link" to="/posts">
+                Blog
+              </Link>
             </li>
             <li>
               <Link className="navigation__logoLink" to="/" title="JAW">

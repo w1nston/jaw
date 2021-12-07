@@ -28,7 +28,7 @@ function Posts() {
   const posts = useLoaderData<Post[]>();
 
   return (
-    <div className="blog__container">
+    <div className="content__container">
       <h1>Posts</h1>
       <ul className="blog__postList">
         {posts.map((post) => (

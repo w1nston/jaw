@@ -46,6 +46,12 @@ body {
 a {
   color: var(--color-links);
   text-decoration: none;
+  outline: none;
+}
+
+a:active,
+a:focus {
+  outline: none;
 }
 
 a:hover {
@@ -83,6 +89,11 @@ h4 {
   display: flex;
 }
 
+.navigation__link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
 .navigation__list {
   display: flex;
   align-items: center;
@@ -97,4 +108,8 @@ h4 {
 
 .layout__content {
   margin-top: calc(var(--header-height) + 0.3rem);
+}
+
+.content__container {
+  padding: 0 1rem;
 }
