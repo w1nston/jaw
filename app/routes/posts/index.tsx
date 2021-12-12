@@ -4,19 +4,7 @@ import { getPosts } from '~/data-loaders/posts.server';
 import blogStyles from '~/styles/blog.css';
 
 export const links: LinksFunction = () => {
-  return [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
-      crossOrigin: 'anonymous',
-    },
-    {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap',
-    },
-    { rel: 'stylesheet', href: blogStyles },
-  ];
+  return [{ rel: 'stylesheet', href: blogStyles }];
 };
 
 export async function loader(): Promise<Post[]> {
@@ -34,7 +22,6 @@ function Posts() {
         {posts.map((post) => (
           <li key={post.slug}>
             <Link to={post.slug}>{post.title}</Link>
-            <div className="blog__postLine" />
           </li>
         ))}
       </ul>

@@ -15,6 +15,18 @@ export function getPosts(): Promise<Post[]> {
       title: 'A Mixtape I Made Just For You',
     },
     {
+      slug: 'my-post',
+      title: 'My Post',
+    },
+    {
+      slug: 'my-other-post',
+      title: 'My Other Post',
+    },
+    {
+      slug: '70s-mixtape',
+      title: 'A Mixtape I Made Just For You',
+    },
+    {
       slug: 'my-last-post',
       title: 'My Last Post',
     },

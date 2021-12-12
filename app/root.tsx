@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from 'react';
 import {
   Link,
   Links,
@@ -8,6 +9,7 @@ import {
   ScrollRestoration,
   useCatch,
 } from 'remix';
+import throttle from 'lodash.throttle';
 import type { LinksFunction } from 'remix';
 
 import globalStylesUrl from '~/styles/global.css';
@@ -23,7 +25,7 @@ export let links: LinksFunction = () => {
     },
     {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap',
     },
     { rel: 'stylesheet', href: globalStylesUrl },
     {
@@ -128,9 +130,46 @@ function Document({
 }
 
 function Layout({ children }: { children: React.ReactNode }) {
+  let headerRef = useRef<HTMLElement | null>(null);
+  let layoutContentRef = useRef<HTMLDivElement | null>(null);
+  let [showHeaderShadow, setShowHeaderShadow] = useState<boolean>(false);
+
+  useEffect(() => {
+    function handleScrollEvent() {
+      if (headerRef.current && layoutContentRef.current) {
+        let header = headerRef.current.getBoundingClientRect();
+        let layoutContent = layoutContentRef.current.getBoundingClientRect();
+
+        console.log({
+          offsetTop: layoutContentRef.current.offsetTop,
+          top: layoutContent.top,
+        });
+
+        if (header.bottom >= layoutContent.top && !showHeaderShadow) {
+          setShowHeaderShadow(true);
+        } else if (header.bottom < layoutContent.top && showHeaderShadow) {
+          setShowHeaderShadow(false);
+        }
+      }
+    }
+
+    let throttledScrollEventHandler = throttle(handleScrollEvent, 90);
+
+    window.addEventListener('scroll', throttledScrollEventHandler);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScrollEventHandler);
+    };
+  }, [showHeaderShadow]);
+
   return (
     <div>
-      <header className="navigation__header">
+      <header
+        ref={headerRef}
+        className={`navigation__header ${
+          showHeaderShadow ? 'navigation__headerShadow' : ''
+        }`}
+      >
         <nav aria-label="Main navigation">
           <ul className="navigation__list">
             <li>
@@ -156,7 +195,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <div className="layout__content">
+      <div ref={layoutContentRef}>
         <div>{children}</div>
       </div>
     </div>
