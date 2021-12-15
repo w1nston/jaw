@@ -1,66 +1,37 @@
-import type { MetaFunction, LoaderFunction } from 'remix';
-import { useLoaderData, json, Link } from 'remix';
+import type { MetaFunction, LinksFunction } from 'remix';
+import indexStyles from '~/styles/index.css';
+import { Link } from 'remix';
 
-type IndexData = {
-  resources: Array<{ name: string; url: string }>;
-  demos: Array<{ name: string; to: string }>;
-};
-
-// Loaders provide data to components and are only ever called on the server, so
-// you can connect to a database or run any server side code you want right next
-// to the component that renders it.
-// https://remix.run/api/conventions#loader
-export let loader: LoaderFunction = () => {
-  let data: IndexData = {
-    resources: [
-      {
-        name: 'Remix Docs',
-        url: 'https://remix.run/docs',
-      },
-      {
-        name: 'React Router Docs',
-        url: 'https://reactrouter.com/docs',
-      },
-      {
-        name: 'Remix Discord',
-        url: 'https://discord.gg/VBePs6d',
-      },
-    ],
-    demos: [
-      {
-        to: 'demos/actions',
-        name: 'Actions',
-      },
-      {
-        to: 'demos/about',
-        name: 'Nested Routes, CSS loading/unloading',
-      },
-      {
-        to: 'demos/params',
-        name: 'URL Params and Error Boundaries',
-      },
-    ],
-  };
-
-  // https://remix.run/api/remix#json
-  return json(data);
-};
-
-// https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
   return {
-    title: 'Remix Starter',
-    description: 'Welcome to remix!',
+    title: 'Home of JAW - Jonas Amsen-Wallander',
+    description: 'A place where I can play around.',
   };
 };
 
-// https://remix.run/guides/routing#index-routes
-export default function Index() {
-  let data = useLoaderData<IndexData>();
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: indexStyles }];
+};
 
+export default function Index() {
   return (
-    <div>
-      <h1>Woop</h1>
+    <div className="container">
+      <h1>Well hello!</h1>
+      <p>How peculiar that you found your way here.</p>
+      <p>
+        This is a place I use to learn more about web development, and some
+        [sources might be added at some point] say that the best way to learn is
+        to teach. With that in mind you could possibly find something of
+        interest in the <Link to="/blog">blog</Link> section.
+      </p>
+      <p>
+        If you're curious <Link to="/about">about me</Link>, guess where you
+        could look.
+      </p>
+      <p>
+        As if that's not enough, I try to maintain my focus by stating it in the{' '}
+        <Link to="/now">now</Link>-section of my page.
+      </p>
     </div>
   );
 }

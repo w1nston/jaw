@@ -76,6 +76,11 @@ h4 {
   font-family: Montserrat;
 }
 
+time {
+  font-family: 'Open Sans';
+  font-variant-numeric: proportional-nums;
+}
+
 .navigation__header {
   box-shadow: none;
   position: sticky;

@@ -14,7 +14,7 @@ function PostSlug() {
 
   return (
     <div className="content__container">
-      <h1>Title</h1>
+      <h1>{slug}</h1>
     </div>
   );
 }

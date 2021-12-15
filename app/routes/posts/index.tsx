@@ -12,7 +12,7 @@ export const links: LinksFunction = () => {
 };
 
 export async function loader(): Promise<IPost[]> {
-  const posts = await getPosts();
+  let posts = await getPosts();
   return posts;
 }
 
@@ -36,7 +36,7 @@ function Post({ slug, title, createdAt }: PostProps) {
 }
 
 function Posts() {
-  const posts = useLoaderData<IPost[]>();
+  let posts = useLoaderData<IPost[]>();
 
   return (
     <div className="content__container">
