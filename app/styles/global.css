@@ -116,6 +116,16 @@ time {
   z-index: 10;
 }
 
+@media screen and (min-width: 650px) {
+  .navigation__list {
+    justify-content: flex-end;
+  }
+
+  .navigation__list li {
+    padding: 0 1rem;
+  }
+}
+
 .content__container {
   padding: 0 1rem;
 }
