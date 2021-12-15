@@ -1,15 +1,12 @@
 :root {
   --color-foreground: rgba(17, 17, 17, 0.8);
   --color-background: #fafafa;
-  /* --color-links: hsl(213, 100%, 52%); */
-  /* --color-links: #0042ff; */
   --color-links: rgba(0, 66, 255, 0.8);
   --color-links-hover: hsl(213, 100%, 43%);
   --color-border: hsl(0, 0%, 82%);
   --font-size: 20px;
-  --font-body: ;
-  /* --font-body: -apple-system, 'Segoe UI', Helvetica Neue, Helvetica, */
-  /* Roboto, Arial, sans-serif, system-ui, 'Apple Color Emoji', 'Segoe UI Emoji'; */
+  --font-body: -apple-system, 'Segoe UI', Helvetica Neue, Helvetica, Roboto,
+    Arial, sans-serif, system-ui, 'Apple Color Emoji', 'Segoe UI Emoji';
   --header-height: 72px;
 }
 
@@ -50,9 +47,7 @@ a {
   font-family: 'Open Sans';
   color: var(--color-links);
   outline: none;
-  text-decoration-thickness: 0.05rem;
-  text-underline-offset: 0.05rem;
-  text-underline-position: from-font;
+  text-decoration: none;
 }
 
 a:active,
@@ -103,6 +98,7 @@ h4 {
   font-size: 1.3rem;
   font-weight: 700;
   color: #0042ff;
+  text-transform: uppercase;
 }
 
 .navigation__list {
@@ -112,6 +108,7 @@ h4 {
   list-style-type: none;
   margin: 0;
   padding: 1rem;
+  z-index: 10;
 }
 
 .content__container {

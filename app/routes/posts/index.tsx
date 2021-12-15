@@ -1,19 +1,42 @@
 import { useLoaderData, Link, LinksFunction } from 'remix';
-import type { Post } from '~/data-loaders/posts.server';
+import format from 'date-fns/format';
+import type { IPost } from '~/data-loaders/posts.server';
 import { getPosts } from '~/data-loaders/posts.server';
 import blogStyles from '~/styles/blog.css';
+
+// TODO: Extract date utils, and expose format fn
+const DATE_FORMAT = 'yyyy-MM-dd';
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: blogStyles }];
 };
 
-export async function loader(): Promise<Post[]> {
+export async function loader(): Promise<IPost[]> {
   const posts = await getPosts();
   return posts;
 }
 
+type PostProps = {
+  slug: string;
+  title: string;
+  createdAt: Date;
+};
+
+function Post({ slug, title, createdAt }: PostProps) {
+  return (
+    <div>
+      <h2 className="post__title">
+        <Link to={slug}>{title}</Link>
+      </h2>
+      <time className="post__date" dateTime={format(createdAt, DATE_FORMAT)}>
+        {format(createdAt, DATE_FORMAT)}
+      </time>
+    </div>
+  );
+}
+
 function Posts() {
-  const posts = useLoaderData<Post[]>();
+  const posts = useLoaderData<IPost[]>();
 
   return (
     <div className="content__container">
@@ -21,7 +44,11 @@ function Posts() {
       <ul className="blog__postList">
         {posts.map((post) => (
           <li key={post.slug}>
-            <Link to={post.slug}>{post.title}</Link>
+            <Post
+              slug={post.slug}
+              title={post.title}
+              createdAt={new Date(post.createdAt)}
+            />
           </li>
         ))}
       </ul>

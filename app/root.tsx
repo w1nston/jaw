@@ -140,10 +140,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         let header = headerRef.current.getBoundingClientRect();
         let layoutContent = layoutContentRef.current.getBoundingClientRect();
 
-        console.log({
-          offsetTop: layoutContentRef.current.offsetTop,
-          top: layoutContent.top,
-        });
+        // TODO: Possibly account for h1 margin...
 
         if (header.bottom >= layoutContent.top && !showHeaderShadow) {
           setShowHeaderShadow(true);
@@ -195,10 +192,18 @@ function Layout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <div ref={layoutContentRef}>
+      <div className="layout__contentContainer" ref={layoutContentRef}>
         <div>{children}</div>
       </div>
     </div>
+  );
+}
+
+function Round() {
+  return (
+    <svg className="circle" height="300" width="300">
+      <circle r="200" fill="rgba(0, 66, 255, 0.1)" />
+    </svg>
   );
 }
 
