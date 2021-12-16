@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, MutableRefObject } from 'react';
 import {
   Link,
   Links,
@@ -129,44 +129,51 @@ function Document({
   );
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
-  let headerRef = useRef<HTMLElement | null>(null);
-  let layoutContentRef = useRef<HTMLDivElement | null>(null);
-  let [showHeaderShadow, setShowHeaderShadow] = useState<boolean>(false);
+function useSmartHeaderAnimation(
+  headerRef: MutableRefObject<HTMLElement | null>
+) {
+  let previousScrollPosition = useRef<number>(0);
 
   useEffect(() => {
-    function handleScrollEvent() {
-      if (headerRef.current && layoutContentRef.current) {
-        let header = headerRef.current.getBoundingClientRect();
-        let layoutContent = layoutContentRef.current.getBoundingClientRect();
+    let mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        // TODO: Possibly account for h1 margin...
+    function handleScroll() {
+      if (mediaQuery && !mediaQuery.matches) {
+        let currentScrollPosition = window.scrollY;
 
-        if (header.bottom >= layoutContent.top && !showHeaderShadow) {
-          setShowHeaderShadow(true);
-        } else if (header.bottom < layoutContent.top && showHeaderShadow) {
-          setShowHeaderShadow(false);
+        let isScrollingDown =
+          currentScrollPosition > previousScrollPosition.current;
+
+        if (isScrollingDown) {
+          headerRef.current?.classList.add('scroll-down');
+          headerRef.current?.classList.remove('scroll-up');
+        } else {
+          headerRef.current?.classList.add('scroll-up');
+          headerRef.current?.classList.remove('scroll-down');
         }
+
+        previousScrollPosition.current = currentScrollPosition;
       }
     }
 
-    let throttledScrollEventHandler = throttle(handleScrollEvent, 90);
+    let throttledScrollHandler = throttle(handleScroll, 99);
 
-    window.addEventListener('scroll', throttledScrollEventHandler);
+    window.addEventListener('scroll', throttledScrollHandler);
 
     return () => {
-      window.removeEventListener('scroll', throttledScrollEventHandler);
+      window.removeEventListener('scroll', throttledScrollHandler);
     };
-  }, [showHeaderShadow]);
+  }, [previousScrollPosition, headerRef]);
+}
+
+function Layout({ children }: { children: React.ReactNode }) {
+  let headerRef = useRef<HTMLElement | null>(null);
+
+  useSmartHeaderAnimation(headerRef);
 
   return (
     <div>
-      <header
-        ref={headerRef}
-        className={`navigation__header ${
-          showHeaderShadow ? 'navigation__headerShadow' : ''
-        }`}
-      >
+      <header ref={headerRef} className="navigation__header">
         <nav aria-label="Main navigation">
           <ul className="navigation__list">
             <li>
@@ -192,18 +199,10 @@ function Layout({ children }: { children: React.ReactNode }) {
           </ul>
         </nav>
       </header>
-      <div className="layout__contentContainer" ref={layoutContentRef}>
+      <div className="layout__contentContainer">
         <div>{children}</div>
       </div>
     </div>
-  );
-}
-
-function Round() {
-  return (
-    <svg className="circle" height="300" width="300">
-      <circle r="200" fill="rgba(0, 66, 255, 0.1)" />
-    </svg>
   );
 }
 
