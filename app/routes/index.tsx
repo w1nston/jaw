@@ -9,7 +9,7 @@ export let meta: MetaFunction = () => {
   };
 };
 
-export const links: LinksFunction = () => {
+export let links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: indexStyles }];
 };
 

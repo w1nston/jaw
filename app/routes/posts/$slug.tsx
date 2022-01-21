@@ -1,7 +1,7 @@
 import { useLoaderData, LoaderFunction } from 'remix';
 import invariant from 'tiny-invariant';
 
-export const loader: LoaderFunction = async ({ params }): Promise<string> => {
+export let loader: LoaderFunction = async ({ params }): Promise<string> => {
   invariant(params.slug, 'expected params.slug');
 
   // TODO: use slug to fetch content
@@ -10,7 +10,7 @@ export const loader: LoaderFunction = async ({ params }): Promise<string> => {
 };
 
 function PostSlug() {
-  const slug = useLoaderData();
+  let slug = useLoaderData();
 
   return (
     <div className="content__container">

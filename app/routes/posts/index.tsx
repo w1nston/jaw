@@ -7,7 +7,7 @@ import blogStyles from '~/styles/blog.css';
 // TODO: Extract date utils, and expose format fn
 const DATE_FORMAT = 'yyyy-MM-dd';
 
-export const links: LinksFunction = () => {
+export let links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: blogStyles }];
 };
 

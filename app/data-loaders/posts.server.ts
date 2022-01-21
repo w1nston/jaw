@@ -1,8 +1,7 @@
 import subDays from 'date-fns/subDays';
 
 export type IPost = {
-  createdAt: string;
-  // Hmm... id?
+  createdAt: Date;
   slug: string;
   title: string;
 };
