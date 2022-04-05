@@ -2,12 +2,10 @@ node_modules
 
 /.cache
 /build
+/dist
 /public/build
+/.mf
+.env
 
 .vscode
-
 .DS_Store
-
-dist
-
-.mf
