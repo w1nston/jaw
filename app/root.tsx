@@ -177,16 +177,6 @@ function Layout({ children }: { children: React.ReactNode }) {
         <nav aria-label="Main navigation">
           <ul className="navigation__list">
             <li>
-              <Link className="navigation__link" to="/about">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link className="navigation__link" to="/now">
-                Now
-              </Link>
-            </li>
-            <li>
               <Link className="navigation__link" to="/posts">
                 Blog
               </Link>
