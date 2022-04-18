@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 1 auto;
+}
