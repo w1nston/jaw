@@ -54,8 +54,6 @@ function createGetPost(api: BlogApi) {
 
     let { title, content } = entry.fields;
 
-    console.log(content);
-
     // TODO: use marked to parse markdown
     // TODO: use https://github.com/cure53/DOMPurify to sanitize result
     return {

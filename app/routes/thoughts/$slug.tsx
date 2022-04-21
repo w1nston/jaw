@@ -3,6 +3,7 @@ import { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import hljs from 'highlight.js';
 import { getBlogPost } from '~/features/blog/getBlogPost.server';
+import { useHTMLSanitizer } from '~/utils/hooks/use-html-sanitizer';
 import codeStylesUrl from 'node_modules/highlight.js/styles/lioshi.css';
 
 export const links: LinksFunction = () => [
@@ -13,13 +14,12 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async ({ params }) => {
-  console.log(params);
-
   return await getBlogPost(params.slug);
 };
 
 export default function ThoughtSlug() {
   let { content } = useLoaderData();
+  let cleanContent = useHTMLSanitizer(content);
 
   useEffect(() => {
     hljs.highlightAll();
@@ -27,7 +27,7 @@ export default function ThoughtSlug() {
 
   return (
     <main>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
     </main>
   );
 }
