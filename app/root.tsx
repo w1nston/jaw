@@ -9,6 +9,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import headerStylesUrl from '~/styles/header.css';
+import baselineStylesUrl from '~/styles/baseline.css';
+import globalStylesUrl from '~/styles/global.css';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -17,7 +19,15 @@ export const meta: MetaFunction = () => ({
 });
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: baselineStylesUrl },
+  { rel: 'stylesheet', href: globalStylesUrl },
   { rel: 'stylesheet', href: headerStylesUrl },
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+  {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap',
+  },
 ];
 
 function Logo() {
@@ -54,9 +64,10 @@ function Logo() {
 function Header() {
   return (
     <header className="header">
-      <Logo />
       <nav className="linksContainer">
-        <Link to="/">Where?</Link>
+        <Link className="logoLink" to="/" aria-label="Link to home">
+          <Logo />
+        </Link>
         <Link to="/thoughts">Thoughts</Link>
       </nav>
     </header>

@@ -5,16 +5,15 @@ import hljs from 'highlight.js';
 import { getBlogPost } from '~/features/blog/getBlogPost.server';
 import { useHTMLSanitizer } from '~/utils/hooks/use-html-sanitizer';
 import codeStylesUrl from 'node_modules/highlight.js/styles/lioshi.css';
+import thoughtsStylesUrl from '~/styles/thoughts.css';
 
 export const links: LinksFunction = () => [
-  {
-    rel: 'stylesheet',
-    href: codeStylesUrl,
-  },
+  { rel: 'stylesheet', href: codeStylesUrl },
+  { rel: 'stylesheet', href: thoughtsStylesUrl },
 ];
 
 export const loader: LoaderFunction = async ({ params }) => {
-  return await getBlogPost(params.slug);
+  return await getBlogPost(params.id);
 };
 
 export default function ThoughtSlug() {
@@ -26,7 +25,7 @@ export default function ThoughtSlug() {
   }, []);
 
   return (
-    <main>
+    <main className="container">
       <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
     </main>
   );

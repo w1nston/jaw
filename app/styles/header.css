@@ -1,10 +1,14 @@
 .header {
   display: flex;
-  align-items: center;
+  padding: 0.8rem;
 }
 
 .linksContainer {
   display: flex;
-  justify-content: space-evenly;
-  flex: 1 auto;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  padding-right: var(--spacing);
 }

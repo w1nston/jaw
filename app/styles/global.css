@@ -1,0 +1,8 @@
+:root {
+  /* Spacing */
+  --outer-spacing: 1rem;
+  --spacing: 0.4rem;
+
+  /* Color */
+  --background-color: #fefdfa;
+}
