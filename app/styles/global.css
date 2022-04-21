@@ -6,3 +6,7 @@
   /* Color */
   --background-color: #fefdfa;
 }
+
+.mainContainer {
+  padding: 0 var(--outer-spacing);
+}

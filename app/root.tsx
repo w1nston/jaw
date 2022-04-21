@@ -23,7 +23,11 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStylesUrl },
   { rel: 'stylesheet', href: headerStylesUrl },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+  {
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous',
+  },
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap',
@@ -83,7 +87,10 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <Outlet />
+
+        <main className="mainContainer">
+          <Outlet />
+        </main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

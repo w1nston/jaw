@@ -1,26 +1,30 @@
-import type { LoaderFunction } from '@remix-run/cloudflare';
+import type { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { Link, useLoaderData } from '@remix-run/react';
 import { getBlogPosts } from '~/features/blog/getBlogPosts.server';
+import type { BlogPost } from '~/types/blog';
+import thoughtsStylesUrl from '~/styles/thoughts.css';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: thoughtsStylesUrl },
+];
 
 export const loader: LoaderFunction = async () => {
   return await getBlogPosts();
 };
 
 export default function Thoughts() {
-  let posts = useLoaderData();
-  // TODO: how to show slug in url, but use id ... without having to fetch all posts
-  //       and match on slug... ?
+  let posts = useLoaderData<BlogPost[]>();
 
   return (
-    <main>
+    <div>
       <h1>Posts</h1>
-      <ul>
+      <ul className="thoughts-list">
         {posts.map((post) => (
           <li key={post.id}>
             <Link to={post.id}>{post.title}</Link>
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }
