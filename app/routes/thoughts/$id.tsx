@@ -17,7 +17,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return await getBlogPost(params.id);
 };
 
-export default function ThoughtSlug() {
+export default function Thought() {
   let { content } = useLoaderData();
   let cleanContent = useHTMLSanitizer(content);
 
