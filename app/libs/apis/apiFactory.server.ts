@@ -1,5 +1,5 @@
 // TODO: perhaps more from fetch...
-type Api = {
+export type Api = {
   get<T>(path: string): Promise<T>;
   // TODO: post, put, options, etc...
 };

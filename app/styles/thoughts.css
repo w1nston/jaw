@@ -1,4 +1,13 @@
 .thoughts-list {
   list-style: none;
   font-size: 1.25rem;
+  padding: 0;
+}
+
+.thoughts-list li {
+  margin: 1rem 0;
+}
+
+.thoughts-list li a {
+  text-decoration: none;
 }

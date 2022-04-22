@@ -1,8 +1,7 @@
 import { marked } from 'marked';
-import hljs from 'highlight.js';
 import { transformBlogPosts } from '~/adapters/contentful/contentfulAdapter.server';
 import type { BlogApi, BlogPost } from '~/types/blog';
-import { createApi } from './apiFactory.server';
+import { createApi, Api } from './apiFactory.server';
 
 declare global {
   let CONTENTFUL_BASE_URL: string;
@@ -12,24 +11,8 @@ declare global {
 
 let api: BlogApi | null = null;
 
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  highlight(code: string, lang: string) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
-  },
-  langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
-  pedantic: false,
-  gfm: true,
-  breaks: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false,
-  xhtml: false,
-});
-
 // TODO: types
-function createGetPosts(api) {
+function createGetPosts(api: Api) {
   return async function getPosts() {
     let entries = await api.get(
       `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=blogPost`
@@ -37,26 +20,22 @@ function createGetPosts(api) {
 
     let posts = transformBlogPosts(entries);
 
-    // TODO: do I need json from remix package?
     return posts;
   };
 }
 
-// TODO
-function createGetPost(api: BlogApi) {
+function createGetPost(api: Api) {
   return async function getPost(id: string): Promise<BlogPost> {
-    // TODO: AHA! need entry ID in posts request
     let entry = await api.get(
       `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries/${id}`
     );
 
-    console.log(entry.fields);
+    // TODO: use invariant
 
-    let { title, content } = entry.fields;
+    let { id: _id, title, content } = entry.fields;
 
-    // TODO: use marked to parse markdown
-    // TODO: use https://github.com/cure53/DOMPurify to sanitize result
     return {
+      id: _id,
       title,
       content: marked.parse(content),
     };
