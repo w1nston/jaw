@@ -5,7 +5,6 @@
   /* --bp-desktop: 1024px; */
 
   /* Spacing */
-  --outer-spacing: 1rem;
   --spacing: 0.8rem;
 
   /* Color */
@@ -14,12 +13,16 @@
 }
 
 .mainContainer {
-  padding: 0 var(--outer-spacing);
+  padding: 0 1rem;
 }
 
 @media (min-width: 640px) {
   .mainContainer {
     display: flex;
     justify-content: center;
+  }
+
+  .innerContainer {
+    max-width: 75vw;
   }
 }

@@ -1,5 +1,6 @@
 import type { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { Link, useLoaderData } from '@remix-run/react';
+import compareDesc from 'date-fns/compareDesc';
 import format from 'date-fns/format';
 import { getBlogPosts } from '~/features/blog/getBlogPosts.server';
 import type { BlogPost } from '~/types/blog';
@@ -26,11 +27,15 @@ function ThoughtLink({ path, title, abstract, publishedAt }: ThoughtLinkProps) {
       <h2 className="thoughtLink__title">{title}</h2>
       <hr className="thoughtLink__divider" />
       <p className="thoughtLink__publishedAt">
-        {`Published at: ${format(publishedAt, 'yyyy-MM-dd')}`}
+        {`Published: ${format(publishedAt, 'yyyy-MM-dd')}`}
       </p>
       <p className="thoughtLink__abstract">{abstract}</p>
     </Link>
   );
+}
+
+function descendingOnPublished(postA: BlogPost, postB: BlogPost): number {
+  return compareDesc(new Date(postA.publishedAt), new Date(postB.publishedAt));
 }
 
 export default function Thoughts() {
@@ -40,7 +45,7 @@ export default function Thoughts() {
     <div>
       <h1>Thoughts</h1>
       <ul className="thoughts-list">
-        {posts.map((post) => (
+        {posts.sort(descendingOnPublished).map((post) => (
           <li key={post.id}>
             <ThoughtLink
               publishedAt={new Date(post.publishedAt)}

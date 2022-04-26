@@ -8,7 +8,7 @@ export function transformBlogPosts(entries) {
       id,
       title,
       abstract,
-      publishedAt: createdAt
+      publishedAt: createdAt,
     };
   });
 }

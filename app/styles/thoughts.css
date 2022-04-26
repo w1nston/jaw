@@ -8,12 +8,6 @@
   margin: 2.4rem 0;
 }
 
-@media (min-width: 640px) {
-  .thoughts-list li {
-    max-width: 75vw;
-  }
-}
-
 .thoughts-list li a {
   text-decoration: none;
 }

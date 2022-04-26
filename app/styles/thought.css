@@ -3,8 +3,11 @@
 }
 
 @media (min-width: 640px) {
+  .thoughtContainer {
+    max-width: 75vw;
+  }
+
   .thoughtContainer pre {
     font-size: 0.7rem;
-    max-width: 25rem;
   }
 }
