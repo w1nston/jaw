@@ -7,6 +7,7 @@ import thoughtStylesUrl from '~/styles/thought.css';
 // @ts-ignore
 import Prism from '~/libs/syntax-highlighting/prismjs/prism';
 import { getThought } from '~/features/thoughts/getThought.server';
+import type { Thought } from '~/types/thoughts';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: codeStylesUrl },
@@ -14,12 +15,18 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async ({ params }) => {
-  // TODO: invariant here
-  return await getThought(params.id);
+  let { id } = params;
+
+  if (!id) {
+    throw new Error("Can't get a thought without ID!");
+  }
+
+  return await getThought(id);
 };
 
-export default function Thought() {
-  let { content } = useLoaderData();
+export default function AThought() {
+  let { content } = useLoaderData<Thought>();
+
   let cleanContent = useHTMLSanitizer(content);
 
   useEffect(() => {
