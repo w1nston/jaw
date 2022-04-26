@@ -8,7 +8,14 @@
   align-items: center;
 }
 
-.logoLink {
+.linksContainer a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.2rem;
+}
+
+.linksContainer .logoLink {
   display: flex;
   padding-right: var(--spacing);
+  border-bottom: none;
 }

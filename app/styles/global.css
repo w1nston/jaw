@@ -6,10 +6,11 @@
 
   /* Spacing */
   --outer-spacing: 1rem;
-  --spacing: 0.4rem;
+  --spacing: 0.8rem;
 
   /* Color */
   --background-color: #fefdfa;
+  --border-color: #333;
 }
 
 .mainContainer {
