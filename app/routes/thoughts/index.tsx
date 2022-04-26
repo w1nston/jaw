@@ -44,6 +44,15 @@ function descendingOnPublished(
 export default function Thoughts() {
   let thoughts = useLoaderData<ThoughtMetadata[]>();
 
+  if (thoughts.length < 1) {
+    return (
+      <div>
+        <h1>Thoughts</h1>
+        <p>Currently thinking...</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Thoughts</h1>
