@@ -2,8 +2,8 @@ import type { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { Link, useLoaderData } from '@remix-run/react';
 import compareDesc from 'date-fns/compareDesc';
 import format from 'date-fns/format';
-import { getBlogPosts } from '~/features/blog/getBlogPosts.server';
-import type { BlogPost } from '~/types/blog';
+import { getThoughts } from '~/features/thoughts/getThoughts.server';
+import type { ThoughtMetadata } from '~/types/thoughts';
 import thoughtsStylesUrl from '~/styles/thoughts.css';
 
 export const links: LinksFunction = () => [
@@ -11,7 +11,7 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async () => {
-  return await getBlogPosts();
+  return await getThoughts();
 };
 
 type ThoughtLinkProps = {
@@ -34,24 +34,27 @@ function ThoughtLink({ path, title, abstract, publishedAt }: ThoughtLinkProps) {
   );
 }
 
-function descendingOnPublished(postA: BlogPost, postB: BlogPost): number {
+function descendingOnPublished(
+  postA: ThoughtMetadata,
+  postB: ThoughtMetadata
+): number {
   return compareDesc(new Date(postA.publishedAt), new Date(postB.publishedAt));
 }
 
 export default function Thoughts() {
-  let posts = useLoaderData<BlogPost[]>();
+  let thoughts = useLoaderData<ThoughtMetadata[]>();
 
   return (
     <div>
       <h1>Thoughts</h1>
       <ul className="thoughts-list">
-        {posts.sort(descendingOnPublished).map((post) => (
-          <li key={post.id}>
+        {thoughts.sort(descendingOnPublished).map((thought) => (
+          <li key={thought.id}>
             <ThoughtLink
-              publishedAt={new Date(post.publishedAt)}
-              abstract={post.abstract}
-              path={post.id}
-              title={post.title}
+              publishedAt={new Date(thought.publishedAt)}
+              abstract={thought.abstract}
+              path={thought.id}
+              title={thought.title}
             />
           </li>
         ))}
