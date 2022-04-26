@@ -5,9 +5,35 @@
 }
 
 .thoughts-list li {
-  margin: 1rem 0;
+  margin: 2.4rem 0;
+}
+
+@media (min-width: 640px) {
+  .thoughts-list li {
+    max-width: 75vw;
+  }
 }
 
 .thoughts-list li a {
   text-decoration: none;
+}
+
+.thoughtLink__title {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.thoughtLink__divider {
+  margin: 0.4rem 0 0.8rem 0;
+}
+
+.thoughtLink__publishedAt {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.thoughtLink__abstract {
+  margin: 0;
+  font-size: 1rem;
 }
