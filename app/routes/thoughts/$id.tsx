@@ -24,6 +24,19 @@ export const loader: LoaderFunction = async ({ params }) => {
   return await getThought(id);
 };
 
+// TODO: types
+export function ErrorBoundary({ error }) {
+  console.error(error); // TODO
+
+  return (
+    <p>
+      Something went wrong fetching the thought. Try reloading the page, and if
+      that doesn't work, go back to the thoughts list, maybe the thought flew
+      away?
+    </p>
+  );
+}
+
 export default function AThought() {
   let { content } = useLoaderData<Thought>();
 

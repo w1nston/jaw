@@ -78,6 +78,31 @@ function Header() {
   );
 }
 
+// TODO: Types
+export function ErrorBoundary({ error }) {
+  // TODO: proper logging, and collection of logging...
+  console.error(error);
+
+  return (
+    <html>
+      <head>
+        <title>JAW</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Header />
+        <main className="mainContainer">
+          <div className="innerContainer">
+            <p>Something went wrong!</p>
+          </div>
+        </main>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
 export default function App() {
   return (
     <html lang="en">
