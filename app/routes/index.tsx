@@ -7,8 +7,8 @@ export default function Index() {
         Sweden.
       </p>
       <p>
-        Welcome to my playground where I intend to play around with things I
-        find interesting.
+        Welcome to my playground where I think out loud while learning, and
+        tinker with things I find interesting.
       </p>
     </div>
   );
