@@ -15,4 +15,5 @@ export type GetThoughtFn = (id: string) => Promise<Thought>;
 export type ThoughtApi = {
   getThoughts: GetThoughtsFn;
   getThought: GetThoughtFn;
+  getThoughtDraft: GetThoughtFn;
 };

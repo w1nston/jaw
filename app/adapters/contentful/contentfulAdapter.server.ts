@@ -5,8 +5,10 @@ import type { Thought, ThoughtApi, ThoughtMetadata } from '~/types/thoughts';
 import type { GetThoughtFn, GetThoughtsFn } from '../../types/thoughts';
 
 declare global {
-  let CONTENTFUL_BASE_URL: string;
+  let CONTENTFUL_DELIVERY_BASE_URL: string;
   let CONTENTFUL_DELIVERY_API_TOKEN: string;
+  let CONTENTFUL_PREVIEW_BASE_URL: string;
+  let CONTENTFUL_PREVIEW_API_TOKEN: string;
   let CONTENTFUL_SPACE_ID: string;
 }
 
@@ -21,7 +23,17 @@ function createGetThoughts(api: Api): GetThoughtsFn {
 }
 
 function createGetThought(api: Api): GetThoughtFn {
-  return async function getPost(id: string): Promise<Thought> {
+  return async function getThought(id: string): Promise<Thought> {
+    let entry = await api.get(
+      `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries/${id}`
+    );
+
+    return transformThought(entry);
+  };
+}
+
+function createGetThoughtDraft(api: Api): GetThoughtFn {
+  return async function getThoughtDraft(id: string): Promise<Thought> {
     let entry = await api.get(
       `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries/${id}`
     );
@@ -31,17 +43,26 @@ function createGetThought(api: Api): GetThoughtFn {
 }
 
 export function createContentfulThoughtsApi(): ThoughtApi {
-  let options = {
+  let deliveryApiOptions = {
     headers: new Headers({
       Authorization: `Bearer ${CONTENTFUL_DELIVERY_API_TOKEN}`,
     }),
   };
 
-  let api = createApi(CONTENTFUL_BASE_URL, options);
+  let deliveryApi = createApi(CONTENTFUL_DELIVERY_BASE_URL, deliveryApiOptions);
+
+  let previewApiOptions = {
+    headers: new Headers({
+      Authorization: `Bearer ${CONTENTFUL_PREVIEW_API_TOKEN}`,
+    }),
+  };
+
+  let previewApi = createApi(CONTENTFUL_PREVIEW_BASE_URL, previewApiOptions);
 
   return {
-    getThoughts: createGetThoughts(api),
-    getThought: createGetThought(api),
+    getThoughts: createGetThoughts(deliveryApi),
+    getThought: createGetThought(deliveryApi),
+    getThoughtDraft: createGetThoughtDraft(previewApi),
   };
 }
 
