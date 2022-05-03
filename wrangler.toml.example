@@ -1,4 +1,5 @@
-name = "remix-cloudflare-workers"
+compatibility_date = "<Today's date>"
+name = "<Name of worker>"
 type = "javascript"
 
 zone_id = ""
