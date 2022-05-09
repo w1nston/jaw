@@ -11,6 +11,7 @@ import {
 import headerStylesUrl from '~/styles/header.css';
 import baselineStylesUrl from '~/styles/baseline.css';
 import globalStylesUrl from '~/styles/global.css';
+import Spacer from '~/components/spacer';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -72,7 +73,10 @@ function Header() {
         <Link className="logoLink" to="/" aria-label="Link to home">
           <Logo />
         </Link>
+        <Spacer width="0.8rem" height="1px" />
         <Link to="/thoughts">Thoughts</Link>
+        <Spacer width="0.8rem" height="1px" />
+        <Link to="/notes">Notes</Link>
       </nav>
     </header>
   );

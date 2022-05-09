@@ -1,11 +1,11 @@
 .header {
   display: flex;
+  align-items: center;
   padding: 0.8rem;
 }
 
 .linksContainer {
   display: flex;
-  align-items: center;
 }
 
 .linksContainer a {
@@ -16,6 +16,5 @@
 
 .linksContainer .logoLink {
   display: flex;
-  padding-right: var(--spacing);
   border-bottom: none;
 }
