@@ -26,9 +26,13 @@ function NoteLink({ path, title, abstract, tags }: NoteLinkProps) {
       <h2 className="noteLink__title">{title}</h2>
       <hr className="noteLink__divider" />
       <p className="noteLink__abstract">{abstract}</p>
-      {tags.map((tag) => (
-        <div key={tag}>{tag}</div>
-      ))}
+      <div className="noteLink__tagContainer">
+        {tags.map((tag) => (
+          <span className="noteLink__tag" key={tag}>
+            {tag}
+          </span>
+        ))}
+      </div>
     </Link>
   );
 }
