@@ -1,25 +1,19 @@
-compatibility_date = "<Today's date>"
-name = "<Name of worker>"
-type = "javascript"
+name = "jaw"
 
-zone_id = ""
-account_id = ""
-route = ""
 workers_dev = true
+main = "./build/index.js"
+# https://developers.cloudflare.com/workers/platform/compatibility-dates
+compatibility_date = "2022-04-05"
 
 [site]
-bucket = "./public"
-entry-point = "."
+  bucket = "./public"
 
 [build]
-command = "npm run build"
-
-[build.upload]
-format="service-worker"
+  command = "npm run build"
 
 [vars]
-CONTENTFUL_SPACE_ID="<SpaceID>"
+CONTENTFUL_SPACE_ID="<SpaceId>"
 CONTENTFUL_DELIVERY_API_TOKEN="<Delivery API Token>"
 CONTENTFUL_DELIVERY_BASE_URL="<Delivery API Base URL>"
-CONTENTFUL_PREVIEW_BASE_URL="<Preview API Base Url>"
+CONTENTFUL_PREVIEW_BASE_URL="<Preview API Base URL>"
 CONTENTFUL_PREVIEW_API_TOKEN="<Preview API Token>"
