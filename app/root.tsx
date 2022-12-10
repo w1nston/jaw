@@ -35,6 +35,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
+// TODO: don't inline svg...
 function Logo() {
   return (
     <svg
