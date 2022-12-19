@@ -10,7 +10,6 @@ export default function Index() {
         Welcome to my playground where I think out loud while learning, and
         tinker with things I find interesting.
       </p>
-      <a rel="me" href="https://hachyderm.io/@w1nston">I'm also on Mastodon.</a>
     </div>
   );
 }

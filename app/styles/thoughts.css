@@ -28,3 +28,9 @@
   margin: 0;
   font-size: 1rem;
 }
+
+.headlineContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
