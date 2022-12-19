@@ -33,6 +33,7 @@ export const links: LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap',
   },
+  { rel: 'me', href: 'https://hachyderm.io/@w1nston' }
 ];
 
 // TODO: don't inline svg...
