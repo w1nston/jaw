@@ -79,6 +79,8 @@ function Header() {
         <Link to="/thoughts">Thoughts</Link>
         <Spacer width="0.8rem" height="1px" />
         <Link to="/notes">Notes</Link>
+        <Spacer width="0.8rem" height="1px" />
+        <Link to="/stuff">Stuff</Link>
       </nav>
     </header>
   );

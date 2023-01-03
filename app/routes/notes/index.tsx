@@ -1,6 +1,5 @@
 import type { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { Link, useLoaderData } from '@remix-run/react';
-import compareDesc from 'date-fns/compareDesc';
 import type { NoteMetadata } from '~/types/notes';
 import notesStylesUrl from '~/styles/notes.css';
 import { getNotes } from '~/features/notes/getNotes.server';

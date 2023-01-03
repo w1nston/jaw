@@ -9,7 +9,14 @@ import type {
   GetThoughtsFn,
 } from '~/types/thoughts';
 import type { GetNotesFn, Note, NoteApi, NoteMetadata } from '~/types/notes';
-import { GetNoteFn } from '../../types/notes';
+import type { GetNoteFn } from '../../types/notes';
+import type {
+  GetSpecificStuffFn,
+  GetStuffFn,
+  Stuff,
+  StuffApi,
+  StuffMetadata,
+} from '~/types/stuff';
 
 declare global {
   let CONTENTFUL_DELIVERY_BASE_URL: string;
@@ -146,5 +153,59 @@ export function createContentfulNotesApi(): NoteApi {
   return {
     getNotes: createGetNotes(deliveryApi),
     getNote: createGetNote(deliveryApi),
+  };
+}
+
+function transformStuff(entries: any): StuffMetadata[] {
+  return entries.items.map((item: any) => {
+    let { id } = item.sys;
+    let { title, abstract, tags } = item.fields;
+
+    return {
+      id,
+      title,
+      abstract,
+      tags,
+    };
+  });
+}
+
+function transformSpecificStuff(entry: any): Stuff {
+  let { content } = entry.fields;
+  return { content: marked.parse(content) };
+}
+
+function createGetStuff(api: Api): GetStuffFn {
+  return async function getStuff(): Promise<StuffMetadata[]> {
+    let entries = await api.get(
+      `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=jawStuff`
+    );
+
+    return transformStuff(entries);
+  };
+}
+
+function createGetSpecificStuff(api: Api): GetSpecificStuffFn {
+  return async function getSpecificStuff(id: string): Promise<Stuff> {
+    let entry = await api.get(
+      `/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries/${id}`
+    );
+
+    return transformSpecificStuff(entry);
+  };
+}
+
+export function createContentfulStuffApi(): StuffApi {
+  let deliveryApiOptions = {
+    headers: new Headers({
+      Authorization: `Bearer ${CONTENTFUL_DELIVERY_API_TOKEN}`,
+    }),
+  };
+
+  let deliveryApi = createApi(CONTENTFUL_DELIVERY_BASE_URL, deliveryApiOptions);
+
+  return {
+    getStuff: createGetStuff(deliveryApi),
+    getSpecificStuff: createGetSpecificStuff(deliveryApi),
   };
 }

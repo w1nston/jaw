@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+.headlineContainer > a {
+  display: flex;
+}
+
 .thoughtLink__title {
   margin-bottom: 0;
   font-size: 1.4rem;

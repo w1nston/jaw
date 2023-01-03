@@ -4,7 +4,6 @@ import { useLoaderData } from '@remix-run/react';
 import { useHTMLSanitizer } from '~/utils/hooks/use-html-sanitizer';
 import codeStylesUrl from '~/libs/syntax-highlighting/prismjs/prism.css';
 import thoughtStylesUrl from '~/styles/thought.css';
-// @ts-ignore
 import Prism from '~/libs/syntax-highlighting/prismjs/prism';
 import { getNote } from '~/features/notes/getNote.server';
 import type { Note } from '~/types/notes';
@@ -31,8 +30,7 @@ export function ErrorBoundary({ error }) {
   return (
     <p>
       Something went wrong fetching the note. Try reloading the page, and if
-      that doesn't work, go back to the notes list, maybe the thought flew
-      away?
+      that doesn't work, go back to the notes list, maybe the thought flew away?
     </p>
   );
 }
@@ -42,6 +40,7 @@ export default function ANote() {
 
   let cleanContent = useHTMLSanitizer(content);
 
+  // TODO: extract hook
   useEffect(() => {
     setTimeout(() => {
       Prism.highlightAll();
