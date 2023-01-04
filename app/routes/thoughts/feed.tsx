@@ -31,9 +31,9 @@ export let loader: LoaderFunction = async ({ request }) => {
         ${thoughts.map((thought) =>
           `
           <item>
-            <title>${cdata(thought.title) ?? 'Thoughtless title'}</title>
+            <title>${cdata(thought.title)}</title>
             <description>${
-              cdata(thought.abstract) ?? 'No description'
+              cdata(thought.abstract)
             }</description>
             <pubDate>${format(
               new Date(thought.publishedAt),

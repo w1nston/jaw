@@ -32,10 +32,10 @@
 }
 
 .stuffLink__tag {
-  border: 1px solid #0042ff;
-  border-radius: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
   padding: 0 .6rem;
   font-size: .6rem;
-  color: #fff;
-  background-color: #0042ff;
+  color: #333;
+  background-color: #ddd;
 }

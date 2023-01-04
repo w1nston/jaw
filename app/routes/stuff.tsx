@@ -22,12 +22,12 @@ type StuffLinkProps = {
 function StuffLink({ path, title, abstract, tags }: StuffLinkProps) {
   return (
     <Link to={path}>
-      <h2 className="StuffLink__title">{title}</h2>
-      <hr className="StuffLink__divider" />
-      <p className="StuffLink__abstract">{abstract}</p>
-      <div className="StuffLink__tagContainer">
+      <h2 className="stuffLink__title">{title}</h2>
+      <hr className="stuffLink__divider" />
+      <p className="stuffLink__abstract">{abstract}</p>
+      <div className="stuffLink__tagContainer">
         {tags.map((tag) => (
-          <span className="StuffLink__tag" key={tag}>
+          <span className="stuffLink__tag" key={tag}>
             {tag}
           </span>
         ))}
