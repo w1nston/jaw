@@ -1,11 +1,7 @@
 import { HeadersFunction, LoaderFunction } from '@remix-run/cloudflare';
-import format from 'date-fns/format';
 import { getThoughts } from '~/features/thoughts/getThoughts.server';
+import { createRSSString } from '~/utils/rss-utils';
 import { getDomainUrl } from '~/utils/url-utils';
-
-function cdata(data: string): string {
-  return `<![CDATA[${data}]]>`;
-}
 
 export let headers: HeadersFunction = ({ loaderHeaders }) => {
   return {
@@ -20,33 +16,18 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   let thoughts = await getThoughts();
 
-  let rss = `
-    <rss version="2.0">
-      <channel>
-        <title>JAW Thoughts</title>
-        <link>${thoughtsUrl}</link>
-        <description>Thoughts of JAW</description>
-        <language>en-us</language>
-        <ttl>40</ttl>
-        ${thoughts.map((thought) =>
-          `
-          <item>
-            <title>${cdata(thought.title)}</title>
-            <description>${
-              cdata(thought.abstract)
-            }</description>
-            <pubDate>${format(
-              new Date(thought.publishedAt),
-              'E, MMM dd yyyy'
-            )}</pubDate>
-            <link>${thoughtsUrl}/${thought.id}</link>
-            <guid>${thoughtsUrl}/${thought.id}</guid>
-          </item>
-        `.trim()
-        )}
-      </channel>
-    </rss>
-  `.trim();
+  let rss = createRSSString({
+    title: 'JAW Thoughts',
+    link: thoughtsUrl,
+    description: 'Thoughts of JAW',
+    items: thoughts.map((thought) => ({
+      title: thought.title,
+      description: thought.abstract,
+      pubDate: thought.publishedAt,
+      link: `${thoughtsUrl}/${thought.id}`,
+      guid: `${thoughtsUrl}/${thought.id}`,
+    })),
+  });
 
   return new Response(rss, {
     headers: new Headers({
