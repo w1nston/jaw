@@ -37,7 +37,7 @@ function NoteLink({ path, title, abstract, tags }: NoteLinkProps) {
 }
 
 export default function Notes() {
-  let notes = useLoaderData<NoteMetadata[]>();
+  let notes: NoteMetadata[] = useLoaderData<NoteMetadata[]>();
 
   if (notes.length < 1) {
     return (
