@@ -4,9 +4,9 @@ import { useLoaderData } from '@remix-run/react';
 import { useHTMLSanitizer } from '~/utils/hooks/use-html-sanitizer';
 import codeStylesUrl from '~/libs/syntax-highlighting/prismjs/prism.css';
 import thoughtStylesUrl from '~/styles/thought.css';
-import Prism from '~/libs/syntax-highlighting/prismjs/prism';
 import { getNote } from '~/features/notes/getNote.server';
 import type { Note } from '~/types/notes';
+import { usePrismHighlight } from '~/utils/hooks/use-prism-highlight';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: codeStylesUrl },
@@ -40,12 +40,7 @@ export default function ANote() {
 
   let cleanContent = useHTMLSanitizer(content);
 
-  // TODO: extract hook
-  useEffect(() => {
-    setTimeout(() => {
-      Prism.highlightAll();
-    }, 0);
-  }, []);
+  usePrismHighlight();
 
   return (
     <div

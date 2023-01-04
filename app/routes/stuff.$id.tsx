@@ -1,10 +1,14 @@
-import { LoaderFunction } from '@remix-run/cloudflare';
+import { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
-import { useEffect } from 'react';
 import { getSpecificStuff } from '~/features/stuff/getSpecificStuff.server';
-import Prism from '~/libs/syntax-highlighting/prismjs/prism';
 import { Stuff } from '~/types/stuff';
+import { usePrismHighlight } from '~/utils/hooks/use-prism-highlight';
 import { useHTMLSanitizer } from '../utils/hooks/use-html-sanitizer';
+import codeStylesUrl from '~/libs/syntax-highlighting/prismjs/prism.css';
+
+export let links: LinksFunction = () => [
+  { rel: 'stylesheet', href: codeStylesUrl },
+];
 
 export let loader: LoaderFunction = async ({ params }) => {
   let { id } = params;
@@ -23,7 +27,7 @@ export function ErrorBoundary({ error }) {
   return (
     <p>
       Something went wrong fetching specific stuff. Try reloading the page, and
-      if that doesn't work, go back to the list of stuff, maybe ther's other
+      if that doesn't work, go back to the list of stuff, maybe there's other
       stuff?
     </p>
   );
@@ -34,12 +38,7 @@ export default function SpecificStuff() {
 
   let cleanContent = useHTMLSanitizer(content);
 
-  // TODO: extract hook
-  useEffect(() => {
-    setTimeout(() => {
-      Prism.highlightAll();
-    }, 0);
-  }, []);
+  usePrismHighlight();
 
   return (
     <div
