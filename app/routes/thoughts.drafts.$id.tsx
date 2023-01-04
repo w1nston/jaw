@@ -22,7 +22,6 @@ export const loader: LoaderFunction = async ({ params }) => {
   return await getThoughtDraft(id);
 };
 
-// TODO: types
 export function ErrorBoundary({ error }: { error: unknown; }) {
   console.error(error); // TODO
 

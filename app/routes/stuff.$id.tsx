@@ -20,8 +20,7 @@ export let loader: LoaderFunction = async ({ params }) => {
   return await getSpecificStuff(id);
 };
 
-// TODO: types
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: { error: unknown }) {
   console.error(error); // TODO
 
   return (

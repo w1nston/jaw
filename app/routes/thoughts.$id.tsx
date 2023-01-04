@@ -1,13 +1,11 @@
-import { useEffect } from 'react';
 import { LinksFunction, LoaderFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { useHTMLSanitizer } from '~/utils/hooks/use-html-sanitizer';
 import codeStylesUrl from '~/libs/syntax-highlighting/prismjs/prism.css';
 import thoughtStylesUrl from '~/styles/thought.css';
-// @ts-ignore
-import Prism from '~/libs/syntax-highlighting/prismjs/prism';
 import { getThought } from '~/features/thoughts/getThought.server';
 import type { Thought } from '~/types/thoughts';
+import { usePrismHighlight } from '~/utils/hooks/use-prism-highlight';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: codeStylesUrl },
@@ -24,8 +22,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return await getThought(id);
 };
 
-// TODO: types
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: { error: unknown }) {
   console.error(error); // TODO
 
   return (
@@ -42,11 +39,7 @@ export default function AThought() {
 
   let cleanContent = useHTMLSanitizer(content);
 
-  useEffect(() => {
-    setTimeout(() => {
-      Prism.highlightAll();
-    }, 0);
-  }, []);
+  usePrismHighlight();
 
   return (
     <div

@@ -23,8 +23,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return await getNote(id);
 };
 
-// TODO: types
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: { error: unknown }) {
   console.error(error); // TODO
 
   return (
