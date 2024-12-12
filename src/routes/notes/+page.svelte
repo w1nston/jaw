@@ -26,11 +26,14 @@
   a {
     text-decoration: none;
     color: #eaff76;
+    max-width: 344px;
   }
 
   article {
     background-color: #3d9970;
     padding: 12px 20px;
+    box-shadow: 2px 2px 12px #333;
+    border: 4px solid #3a8964;
   }
 
   .even {
@@ -41,6 +44,11 @@
     transform: rotate(-2deg);
   }
 
+  h1 {
+    color: #200b00;
+    margin: unset;
+  }
+
   h2 {
     margin: unset;
   }
@@ -49,7 +57,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
   }
 
   .tag-container {

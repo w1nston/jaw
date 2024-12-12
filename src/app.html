@@ -13,7 +13,23 @@
       position: relative;
       padding: 20px;
       z-index: 10;
+      gap: 16px;
 		}
+
+    .nav-link {
+      color: var(--text-color-primary);
+      background-color: var(--surface-color-primary);
+      padding: 8px;
+    }
+
+    .nav :nth-child(odd) {
+      transform: rotate(2deg);
+    }
+
+    .nav :nth-child(even) {
+      transform: rotate(-2deg);
+    }
+
 	</style>
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -46,7 +62,8 @@
           />
         </svg>
       </a>
-      <a href="/notes">Notes</a>
+      <a class="nav-link" href="/thoughts">Thoughts</a>
+      <a class="nav-link" href="/notes">Notes</a>
     </nav>
     <div style="display: contents">%sveltekit.body%</div>
   </body>
