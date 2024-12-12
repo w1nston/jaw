@@ -22,11 +22,11 @@
       padding: 8px;
     }
 
-    .nav :nth-child(odd) {
+    .nav :nth-child(odd):not(:first-child) {
       transform: rotate(2deg);
     }
 
-    .nav :nth-child(even) {
+    .nav :nth-child(even):not(:first-child) {
       transform: rotate(-2deg);
     }
 
