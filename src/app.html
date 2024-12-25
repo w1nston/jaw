@@ -5,32 +5,6 @@
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     %sveltekit.head%
-	
-	<style>
-		.nav {
-			display: flex;
-			align-items: center;
-      position: relative;
-      padding: 20px;
-      z-index: 10;
-      gap: 16px;
-		}
-
-    .nav-link {
-      color: var(--text-color-primary);
-      background-color: var(--surface-color-primary);
-      padding: 8px;
-    }
-
-    .nav :nth-child(odd):not(:first-child) {
-      transform: rotate(2deg);
-    }
-
-    .nav :nth-child(even):not(:first-child) {
-      transform: rotate(-2deg);
-    }
-
-	</style>
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>

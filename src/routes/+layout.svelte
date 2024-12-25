@@ -2,7 +2,7 @@
   import '../styles/baseline.css';
   import '../styles/globals.css';
   import '../styles/vars.css';
-  import NavBar from '../features/navigation/views/NavBar.svelte';
+  import NavBar from '../features/navigation/NavBar.svelte';
 
   let { children } = $props();
 </script>
