@@ -15,7 +15,7 @@
     setTimeout(() => {
       //@ts-ignore
       Prism.highlightAll();
-    }, 10);
+    }, 0);
   });
 </script>
 
