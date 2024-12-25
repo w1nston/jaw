@@ -5,24 +5,29 @@
 
   let { data }: { data: PageData } = $props();
 
-  let note = sanitizeHtml(data.note.content);
+  let note = sanitizeHtml(data.note.content, {
+    allowedClasses: {
+      code: ['language-*']
+    }
+  });
 
   onMount(() => {
-    // @ts-ignore
-    Prism.highlightAll();
-
-    console.log('note?', note);
+    setTimeout(() => {
+      //@ts-ignore
+      Prism.highlightAll();
+    }, 0);
   });
 </script>
 
 <svelte:head>
   <link rel="stylesheet" href="/prism.css" />
-  <script src="/prism.js"></script>
 </svelte:head>
 
 <section>
   {@html note}
 </section>
+
+{@html '<script src="/prism.js"></script>'}
 
 <style>
   section {
