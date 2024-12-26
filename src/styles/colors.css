@@ -12,10 +12,10 @@
   :root {
     --bg-color: #001f3f;
     --text-color: #ddd;
-    --link-color: #eaff76; /* TODO */
-    --surface-text-color: #eaff76;
-    --surface-color: #3d9970; /* TODO */
-    --surface-border: #3a8964; /* TODO */
+    --link-color: var(--text-color);
+    --surface-text-color: #3d9970;
+    --surface-color: #203c57;
+    --surface-border: #3a8964;
     --logo-color: #ffdc00;
   }
 }
@@ -23,10 +23,10 @@
 body.dark-theme {
   --bg-color: #001f3f;
   --text-color: #ddd;
-  --link-color: #eaff76; /* TODO */
-  --surface-text-color: #eaff76;
-  --surface-color: #3d9970; /* TODO */
-  --surface-border: #3a8964; /* TODO */
+  --link-color: var(--text-color);
+  --surface-text-color: #3d9970;
+  --surface-color: #203c57;
+  --surface-border: #3a8964;
   --logo-color: #ffdc00;
 }
 
