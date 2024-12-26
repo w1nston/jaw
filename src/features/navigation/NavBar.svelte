@@ -52,6 +52,7 @@
   <nav class="nav">
     <a href="/">
       <Logo />
+      <span class="visible-hidden">Go to home route</span>
     </a>
     <a class="nav-link" href="/thoughts">Thoughts</a>
     <a class="nav-link" href="/notes">Notes</a>
@@ -103,7 +104,9 @@
     transform: rotate(-2deg);
   }
 
-  .nav > a {
+  .nav-link {
+    color: var(--surface-text-color);
+    background-color: var(--surface-color);
     padding: 8px;
   }
 
@@ -119,7 +122,7 @@
   }
 
   button {
-    border: 1px solid #0042ff;
+    border: 1px solid var(--logo-color);
     background: none;
     cursor: pointer;
     border-radius: 16px;

@@ -35,6 +35,6 @@
 
 <style>
   section {
-    padding: 0 20px 20px 20px;
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
 </style>

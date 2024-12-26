@@ -9,7 +9,7 @@
   <h1>Notes</h1>
   {#each notes as note, index}
     <a href={`/notes/${note.id}`}>
-      <article class={`note-surface ${(index + 1) % 2 === 0 ? 'even' : 'odd'}`}>
+      <article class={(index + 1) % 2 === 0 ? 'even' : 'odd'}>
         <h2>{note.title}</h2>
         <p>{note.abstract}</p>
         <div class="tag-container">
@@ -31,6 +31,14 @@
   article {
     padding: 12px 20px;
     box-shadow: 2px 2px 12px #333;
+    background-color: var(--surface-color);
+    border: 4px solid var(--surface-border);
+    color: var(--surface-text-color);
+  }
+
+  .note-tag {
+    background-color: var(--surface-text-color);
+    color: var(--surface-color);
   }
 
   .even {

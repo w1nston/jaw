@@ -1,80 +1,41 @@
-body {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-}
-
-body.dark-theme {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-}
-
-a {
-  color: var(--link-color-light);
-}
-
-.logo-colors {
-  fill: var(--logo-color-light);
-}
-
-.nav-link {
-  color: var(--link-color-light);
-  background-color: var(--surface-color-light);
-  padding: 8px;
-}
-
-.empty-thoughts {
-  background-color: var(--surface-color-light);
-  color: var(--surface-text-color-light);
-  border: 4px solid var(--surface-border-light);
-}
-
-.note-surface {
-  background-color: var(--surface-color-light);
-  border: 4px solid var(--surface-border-light);
-}
-
-.note-tag {
-  background-color: var(--surface-text-color-light);
-  color: var(--surface-color-light);
+:root {
+  --bg-color: #fff;
+  --text-color: #001f3f;
+  --link-color: var(--text-color);
+  --surface-text-color: #eaff76;
+  --surface-color: #3d9970;
+  --surface-border: #3a8964;
+  --logo-color: #0042ff;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
+  :root {
+    --bg-color: #001f3f;
+    --text-color: #ddd;
+    --link-color: #eaff76; /* TODO */
+    --surface-text-color: #eaff76;
+    --surface-color: #3d9970; /* TODO */
+    --surface-border: #3a8964; /* TODO */
+    --logo-color: #ffdc00;
   }
+}
 
-  body.light-theme {
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-  }
+body.dark-theme {
+  --bg-color: #001f3f;
+  --text-color: #ddd;
+  --link-color: #eaff76; /* TODO */
+  --surface-text-color: #eaff76;
+  --surface-color: #3d9970; /* TODO */
+  --surface-border: #3a8964; /* TODO */
+  --logo-color: #ffdc00;
+}
 
-  a {
-    color: var(--link-color-dark);
-  }
-
-  .logo-colors {
-    fill: var(--logo-color-dark);
-  }
-
-  .nav-link {
-    color: var(--link-color-dark);
-    background-color: var(--surface-color-dark);
-  }
-
-  .empty-thoughts {
-    background-color: var(--surface-color-dark);
-    color: var(--surface-text-color-dark);
-    border: 4px solid var(--surface-border-dark);
-  }
-
-  .note-surface {
-    background-color: var(--surface-color-dark);
-    border: 4px solid var(--surface-border-dark);
-  }
-
-  .note-tag {
-    background-color: var(--surface-text-color-dark);
-    color: var(--surface-color-dark);
-  }
+body.light-theme {
+  --bg-color: #fff;
+  --text-color: #001f3f;
+  --link-color: #eaff76;
+  --surface-text-color: #eaff76;
+  --surface-color: #3d9970;
+  --surface-border: #3a8964;
+  --logo-color: #0042ff;
 }

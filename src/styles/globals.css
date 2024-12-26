@@ -1,12 +1,22 @@
 body {
-    font-family: Tahoma, Arial, sans-serif;
+  font-family: Tahoma, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-h1, 
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: Verdana, Helvetica, sans-serif;
+  font-family: Verdana, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.logo-colors {
+  fill: var(--logo-color);
 }
