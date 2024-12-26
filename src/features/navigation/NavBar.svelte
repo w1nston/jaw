@@ -1,7 +1,51 @@
-<script>
+<script lang="ts">
   import Logo from './Logo.svelte';
   import DarkIcon from './DarkIcon.svelte';
   import LightIcon from './LightIcon.svelte';
+  import { onDestroy, onMount } from 'svelte';
+
+  const THEME_STORAGE_KEY = 'theme';
+
+  let isDarkMode = $state(false);
+
+  type ITheme = {
+    Dark: 'dark';
+    Light: 'light';
+  };
+
+  let Theme: ITheme = {
+    Dark: 'dark',
+    Light: 'light'
+  };
+
+  function setTheme(theme: 'dark' | 'light') {
+    localStorage.removeItem(THEME_STORAGE_KEY);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }
+
+  function handleThemeChange(event: MediaQueryListEvent) {
+    isDarkMode = event.matches;
+  }
+
+  onMount(() => {
+    let savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    if (savedTheme) {
+      isDarkMode = savedTheme === 'dark';
+
+      document.body.classList.toggle(isDarkMode ? 'dark-theme' : 'light-theme');
+    } else {
+      let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      mediaQuery.addEventListener('change', handleThemeChange);
+
+      onDestroy(() => {
+        mediaQuery.removeEventListener('change', handleThemeChange);
+      });
+
+      let prefersDark = mediaQuery.matches;
+      isDarkMode = prefersDark;
+    }
+  });
 </script>
 
 <section class="stack">
@@ -14,8 +58,30 @@
   </nav>
 
   <section class="dark-light-mode-container">
-    <button class="active"><LightIcon /></button>
-    <button><DarkIcon /></button>
+    <button
+      onclick={() => {
+        setTheme(Theme.Light);
+        isDarkMode = false;
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+      }}
+      class={isDarkMode ? '' : 'active'}
+    >
+      <LightIcon />
+      <span class="visible-hidden">Change to light mode</span>
+    </button>
+    <button
+      onclick={() => {
+        setTheme(Theme.Dark);
+        isDarkMode = true;
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+      }}
+      class={isDarkMode ? 'active' : ''}
+    >
+      <DarkIcon />
+      <span class="visible-hidden">Change to dark mode</span>
+    </button>
   </section>
 </section>
 
@@ -46,7 +112,10 @@
     justify-content: flex-end;
     padding: 20px;
     gap: 8px;
-    z-index: 10;
+    z-index: 20;
+    width: fit-content;
+    justify-self: end;
+    align-self: center;
   }
 
   button {
@@ -73,5 +142,22 @@
 
   .stack > * {
     grid-area: 1 / -1;
+  }
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .visible-hidden:focus {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    width: auto;
   }
 </style>

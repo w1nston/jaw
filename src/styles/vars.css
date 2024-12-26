@@ -5,6 +5,7 @@
   --surface-text-color-light: #eaff76;
   --surface-color-light: #3d9970;
   --surface-border-light: #3a8964;
+  --logo-color-light: #0042ff;
 
   --bg-color-dark: #001f3f;
   --text-color-dark: #ddd;
@@ -12,4 +13,5 @@
   --surface-text-color-dark: #eaff76;
   --surface-color-dark: #3d9970; /* TODO */
   --surface-border-dark: #3a8964; /* TODO */
+  --logo-color-dark: #ffdc00;
 }

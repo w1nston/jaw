@@ -3,8 +3,17 @@ body {
   color: var(--text-color-light);
 }
 
+body.dark-theme {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
 a {
   color: var(--link-color-light);
+}
+
+.logo-colors {
+  fill: var(--logo-color-light);
 }
 
 .nav-link {
@@ -35,8 +44,17 @@ a {
     color: var(--text-color-dark);
   }
 
+  body.light-theme {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+  }
+
   a {
     color: var(--link-color-dark);
+  }
+
+  .logo-colors {
+    fill: var(--logo-color-dark);
   }
 
   .nav-link {
