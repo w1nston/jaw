@@ -9,7 +9,7 @@
   <h1>Thoughts</h1>
   {#if thoughts.length < 1}
     <div class="empty-container">
-        <p class="empty">Currently thinking...</p>
+        <p class="empty-thoughts">Currently thinking...</p>
     </div>
   {:else}
     {#each thoughts as thought, index}
@@ -34,12 +34,9 @@
     padding: 40px 0;
   }
 
-  .empty {
-    background-color: var(--surface-color-primary);
-    color: var(--text-color-primary);
+  .empty-container > p {
     padding: 8px;
     width: fit-content;
-    border: 4px solid #3a8964;
     transform: rotate(-2deg);
   }
 </style>

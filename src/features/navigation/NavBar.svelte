@@ -29,18 +29,16 @@
     gap: 16px;
   }
 
-  .nav-link {
-    color: var(--text-color-primary);
-    background-color: var(--surface-color-primary);
-    padding: 8px;
-  }
-
   .nav :nth-child(odd):not(:first-child) {
     transform: rotate(2deg);
   }
 
   .nav :nth-child(even):not(:first-child) {
     transform: rotate(-2deg);
+  }
+
+  .nav > a {
+    padding: 8px;
   }
 
   .dark-light-mode-container {

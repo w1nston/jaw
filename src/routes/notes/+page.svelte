@@ -9,12 +9,12 @@
   <h1>Notes</h1>
   {#each notes as note, index}
     <a href={`/notes/${note.id}`}>
-      <article class={(index + 1) % 2 === 0 ? 'even' : 'odd'}>
+      <article class={`note-surface ${(index + 1) % 2 === 0 ? 'even' : 'odd'}`}>
         <h2>{note.title}</h2>
         <p>{note.abstract}</p>
         <div class="tag-container">
           {#each note.tags as tag}
-            <span class="tag">{tag}</span>
+            <span class="note-tag">{tag}</span>
           {/each}
         </div>
       </article>
@@ -25,15 +25,12 @@
 <style>
   a {
     text-decoration: none;
-    color: #eaff76;
     max-width: 344px;
   }
 
   article {
-    background-color: #3d9970;
     padding: 12px 20px;
     box-shadow: 2px 2px 12px #333;
-    border: 4px solid #3a8964;
   }
 
   .even {
@@ -45,7 +42,6 @@
   }
 
   h1 {
-    color: #200b00;
     margin: unset;
   }
 
@@ -65,10 +61,8 @@
     gap: 8px;
   }
 
-  .tag {
-    background-color: #eaff76;
+  .tag-container > span {
     font-weight: 700;
-    color: #3d9970;
     padding: 4px;
   }
 </style>

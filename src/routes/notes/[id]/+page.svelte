@@ -11,23 +11,27 @@
     }
   });
 
-  onMount(() => {
+  function initSyntaxHighlighting(delay: number = 10) {
     setTimeout(() => {
-      //@ts-ignore
-      Prism.highlightAll();
-    }, 0);
+        //@ts-ignore
+        Prism.highlightAll();
+    }, delay);
+  }
+
+
+  onMount(() => {
+    initSyntaxHighlighting();
   });
 </script>
 
 <svelte:head>
   <link rel="stylesheet" href="/prism.css" />
+  <script src="/prism.js"></script>
 </svelte:head>
 
 <section>
   {@html note}
 </section>
-
-{@html '<script src="/prism.js"></script>'}
 
 <style>
   section {
