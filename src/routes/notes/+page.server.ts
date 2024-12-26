@@ -6,3 +6,6 @@ export let load: PageServerLoad = async ({ params }) => {
     notes: await getNotes()
   };
 };
+
+
+// https://scottspence.com/posts/make-an-rss-feed-with-sveltekit

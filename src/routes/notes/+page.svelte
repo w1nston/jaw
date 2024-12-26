@@ -1,12 +1,19 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import RSSIcon from '$lib/rss/RSSIcon.svelte';
 
   let { data }: { data: PageData } = $props();
   let notes = data.notes;
 </script>
 
 <section>
-  <h1>Notes</h1>
+  <h1 class="heading">
+    Notes
+    <a class="rss-icon-container" href="/notes/feed" download="jaw-notes-rss.xml">
+      <RSSIcon />
+      <p class="visible-hidden">Link to RSS Feed</p>
+    </a>
+  </h1>
   {#each notes as note, index}
     <a href={`/notes/${note.id}`}>
       <article class={(index + 1) % 2 === 0 ? 'even' : 'odd'}>
@@ -28,11 +35,16 @@
     max-width: 344px;
   }
 
+  .rss-icon-container {
+    display: flex;
+    align-self: center;
+  }
+
   article {
-    padding: 12px 20px;
+    padding: var(--spacing-md) var(--spacing-lg);
     box-shadow: 2px 2px 12px #333;
     background-color: var(--surface-color);
-    border: 4px solid var(--surface-border);
+    border: var(--thick) solid var(--surface-border);
     color: var(--surface-text-color);
   }
 
@@ -47,6 +59,12 @@
 
   .odd {
     transform: rotate(-2deg);
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
   }
 
   h1 {

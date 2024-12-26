@@ -30,6 +30,7 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
+		"date-fns": "^4.1.0",
 		"marked": "^15.0.3",
 		"prismjs": "^1.29.0",
 		"sanitize-html": "^2.13.1"
