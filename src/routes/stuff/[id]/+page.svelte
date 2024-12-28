@@ -2,20 +2,22 @@
   import sanitizeHtml from 'sanitize-html';
   import type { PageData } from './$types';
   import { onMount } from 'svelte';
-  import { initSyntaxHighlighting } from '$lib/adapters/syntax-highlighting/prismjs/syntaxUtils.server';
+  import { initSyntaxHighlighting } from '$lib/adapters/syntax-highlighting/prismjs/syntaxUtils';
 
   let { data }: { data: PageData } = $props();
 
-  let stuffs = $state('');
-  
+  let specificStuff = $state('');
+
   async function initialize() {
     let content = '';
 
     if (data.stuffs.content instanceof Promise) {
       content = await data.stuffs.content;
+    } else {
+        content = data.stuffs.content;
     }
 
-    stuffs = sanitizeHtml(content, {
+    specificStuff = sanitizeHtml(content, {
       allowedClasses: {
         code: ['language-*']
       }
@@ -35,7 +37,7 @@
 </svelte:head>
 
 <section>
-  {@html stuffs}
+  {@html specificStuff}
 </section>
 
 <style>
