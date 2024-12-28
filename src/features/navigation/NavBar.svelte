@@ -91,9 +91,9 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding: 20px;
+    padding: var(--spacing-lg);
     z-index: 20;
-    gap: 16px;
+    gap: var(--spacing-md);
   }
 
   .nav :nth-child(odd):not(:first-child) {
@@ -107,14 +107,14 @@
   .nav-link {
     color: var(--surface-text-color);
     background-color: var(--surface-color);
-    padding: 8px;
+    padding: var(--spacing-sm);
   }
 
   .dark-light-mode-container {
     display: flex;
     justify-content: flex-end;
-    padding: 20px;
-    gap: 8px;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-sm);
     z-index: 20;
     width: fit-content;
     justify-self: end;
@@ -122,7 +122,7 @@
   }
 
   button {
-    border: 1px solid var(--logo-color);
+    border: var(--thin) solid var(--logo-color);
     background: none;
     cursor: pointer;
     border-radius: 16px;
