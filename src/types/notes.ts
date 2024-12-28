@@ -7,7 +7,7 @@ export type NoteApi = {
 };
 
 export type Note = {
-  content: string;
+  content: string | Promise<string>;
 }
 
 export type NoteMetadata = {
@@ -15,5 +15,5 @@ export type NoteMetadata = {
   title: string;
   abstract: string;
   tags: string[];
-  path: string;
+  publishedAt: string;
 };

@@ -54,7 +54,7 @@
       <Logo />
       <span class="visible-hidden">Go to home route</span>
     </a>
-    <a class="nav-link" href="/thoughts">Thoughts</a>
+    <a class="nav-link" href="/stuff">Stuff</a>
     <a class="nav-link" href="/notes">Notes</a>
   </nav>
 

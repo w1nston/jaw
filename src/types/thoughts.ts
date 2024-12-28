@@ -6,7 +6,7 @@ export type ThoughtMetadata = {
 };
 
 export type Thought = {
-  content: string;
+  content: string | Promise<string>;
 };
 
 export type GetThoughtsFn = () => Promise<ThoughtMetadata[]>;

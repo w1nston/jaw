@@ -6,7 +6,7 @@ import type { GetNotesFn, GetNoteFn, Note, NoteApi, NoteMetadata } from '../../.
 
 function transformNotes(entries: any): NoteMetadata[] {
   return entries.items.map((item: any) => {
-    let { id } = item.sys;
+    let { id, createdAt } = item.sys;
     let { title, abstract, tags } = item.fields;
 
     return {
@@ -14,7 +14,8 @@ function transformNotes(entries: any): NoteMetadata[] {
       title,
       abstract,
       tags,
-    };
+      publishedAt: createdAt
+    } satisfies NoteMetadata;
   });
 }
 

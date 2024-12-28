@@ -11,7 +11,7 @@
     Notes
     <a class="rss-icon-container" href="/notes/feed" download="jaw-notes-rss.xml">
       <RSSIcon />
-      <p class="visible-hidden">Link to RSS Feed</p>
+      <p class="visible-hidden">Link to RSS Feed for "Notes"</p>
     </a>
   </h1>
   {#each notes as note, index}
@@ -78,13 +78,13 @@
   section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 0 20px 20px 20px;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
 
   .tag-container {
     display: flex;
-    gap: 8px;
+    gap: var(--spacing-sm);
   }
 
   .tag-container > span {

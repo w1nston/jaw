@@ -1,5 +1,6 @@
 import { env } from '$env/dynamic/private';
 import { createApi, type Api } from '$lib/apis/apiFactory.server';
+import { marked } from 'marked';
 import type { GetThoughtFn, GetThoughtsFn, Thought, ThoughtApi, ThoughtMetadata } from "../../../types/thoughts";
 
 export function transformThoughts(entries: any): ThoughtMetadata[] {
@@ -12,7 +13,7 @@ export function transformThoughts(entries: any): ThoughtMetadata[] {
       title,
       abstract,
       publishedAt: createdAt,
-    };
+    } satisfies ThoughtMetadata;
   });
 }
 

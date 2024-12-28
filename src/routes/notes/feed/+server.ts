@@ -9,8 +9,6 @@ export let GET: RequestHandler = async ({ url }) => {
 
   let notes = await getNotes();
 
-  console.log('notes?', notes);
-
   let rss = createRSSString({
     title: 'JAW Notes',
     link: notesUrl,
@@ -18,7 +16,7 @@ export let GET: RequestHandler = async ({ url }) => {
     items: notes.map((note) => ({
       title: note.title,
       description: note.abstract,
-      pubDate: new Date(Date.now()).toISOString(), // TODO: note.publishedAt
+      pubDate: note.publishedAt,
       link: `${notesUrl}/${note.id}`,
       guid: `${notesUrl}/${note.id}`
     }))
