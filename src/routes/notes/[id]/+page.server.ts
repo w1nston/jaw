@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export let load: PageServerLoad = async ({ params }) => {
   if (!params.id || params.id === '') {
-    throw new Error("Can't get a thought without an id...");
+    throw new Error("Can't get a note without an id...");
   }
 
   return {

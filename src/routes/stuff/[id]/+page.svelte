@@ -6,13 +6,25 @@
 
   let { data }: { data: PageData } = $props();
 
-  let note = sanitizeHtml(data.note.content, {
-    allowedClasses: {
-      code: ['language-*']
-    }
-  });
+  let stuffs = $state('');
+  
+  async function initialize() {
+    let content = '';
 
-  onMount(() => {
+    if (data.stuffs.content instanceof Promise) {
+      content = await data.stuffs.content;
+    }
+
+    stuffs = sanitizeHtml(content, {
+      allowedClasses: {
+        code: ['language-*']
+      }
+    });
+
+  }
+
+  onMount(async () => {
+    await initialize();
     initSyntaxHighlighting();
   });
 </script>
@@ -23,7 +35,7 @@
 </svelte:head>
 
 <section>
-  {@html note}
+  {@html stuffs}
 </section>
 
 <style>
