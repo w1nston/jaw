@@ -6,6 +6,10 @@
   let drafts = data.drafts;
 </script>
 
+<svelte:head>
+    <meta name="robots" content="noindex, nofollow">
+</svelte:head>
+
 <section>
   <h1>Stuff in progress</h1>
   {#if drafts.length < 1}

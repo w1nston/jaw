@@ -30,12 +30,13 @@
 </script>
 
 <svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="/prism.css" />
   <script src="/prism.js"></script>
 </svelte:head>
 
 <section>
-    {@html specificStuffDraft}
+  {@html specificStuffDraft}
 </section>
 
 <style>
