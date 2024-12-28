@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/private';
 import { createApi, type Api } from '$lib/apis/apiFactory.server';
 import { marked } from 'marked';
-import type { GetSpecificStuffFn, GetStuffFn, Stuff, StuffApi, StuffMetadata } from '../../../types/stuff';
+import type { GetSpecificStuffDraftFn, GetSpecificStuffFn, GetStuffDraftsFn, GetStuffFn, Stuff, StuffApi, StuffMetadata } from '../../../types/stuff';
 
 function transformStuff(entries: any): StuffMetadata[] {
   return entries.items.map((item: any) => {
@@ -43,6 +43,26 @@ function createGetSpecificStuff(api: Api): GetSpecificStuffFn {
   };
 }
 
+function createGetStuffDrafts(api: Api): GetStuffDraftsFn {
+  return async function getStuffDrafts(): Promise<StuffMetadata[]> {
+    let entry = await api.get(
+       `/spaces/${env.CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=jawStuff`
+    )
+
+    return transformStuff(entry);
+  }
+}
+
+function createGetSpecificStuffDraft(api: Api): GetSpecificStuffDraftFn {
+  return async function getSpecificStuffDraft(id: string): Promise<Stuff> {
+    let entry = await api.get(
+      `/spaces/${env.CONTENTFUL_SPACE_ID}/environments/master/entries/${id}`
+    )
+
+    return transformSpecificStuff(entry);
+  }
+}
+
 export function createContentfulStuffApi(): StuffApi {
   let deliveryApiOptions = {
     headers: new Headers({
@@ -52,8 +72,18 @@ export function createContentfulStuffApi(): StuffApi {
 
   let deliveryApi = createApi(env.CONTENTFUL_DELIVERY_BASE_URL, deliveryApiOptions);
 
+  let previewApiOptions = {
+    headers: new Headers({
+      Authorization: `Bearer ${env.CONTENTFUL_PREVIEW_API_TOKEN}`,
+    }),
+  };
+
+  let previewApi = createApi(env.CONTENTFUL_PREVIEW_BASE_URL, previewApiOptions);
+
   return {
     getStuff: createGetStuff(deliveryApi),
     getSpecificStuff: createGetSpecificStuff(deliveryApi),
+    getStuffDrafts: createGetStuffDrafts(previewApi),
+    getSpecificStuffDraft: createGetSpecificStuffDraft(previewApi)
   };
 }

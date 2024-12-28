@@ -43,12 +43,10 @@
     margin: unset;
   }
 
-
   section {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
-
 </style>

@@ -1,23 +1,22 @@
 <script lang="ts">
   import sanitizeHtml from 'sanitize-html';
-  import type { PageData } from './$types';
   import { onMount } from 'svelte';
+  import type { PageData } from './$types';
   import { initSyntaxHighlighting } from '$lib/adapters/syntax-highlighting/prismjs/syntaxUtils';
 
   let { data }: { data: PageData } = $props();
-
-  let specificStuff = $state('');
+  let specificStuffDraft = $state('');
 
   async function initialize() {
     let content = '';
 
-    if (data.stuffs.content instanceof Promise) {
-      content = await data.stuffs.content;
+    if (data.specificStuffDraft.content instanceof Promise) {
+      content = await data.specificStuffDraft.content;
     } else {
-      content = data.stuffs.content;
+      content = data.specificStuffDraft.content;
     }
 
-    specificStuff = sanitizeHtml(content, {
+    specificStuffDraft = sanitizeHtml(content, {
       allowedClasses: {
         code: ['language-*']
       }
@@ -36,7 +35,7 @@
 </svelte:head>
 
 <section>
-  {@html specificStuff}
+    {@html specificStuffDraft}
 </section>
 
 <style>
