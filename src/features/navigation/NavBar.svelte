@@ -59,34 +59,40 @@
   </nav>
 
   <section class="dark-light-mode-container">
-    <button
-      onclick={() => {
-        setTheme(Theme.Light);
-        isDarkMode = false;
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
-      }}
-      class={isDarkMode ? '' : 'active'}
-    >
-      <LightIcon />
-      <span class="visible-hidden">Change to light mode</span>
-    </button>
-    <button
-      onclick={() => {
-        setTheme(Theme.Dark);
-        isDarkMode = true;
-        document.body.classList.remove('light-theme');
-        document.body.classList.add('dark-theme');
-      }}
-      class={isDarkMode ? 'active' : ''}
-    >
-      <DarkIcon />
-      <span class="visible-hidden">Change to dark mode</span>
-    </button>
+    <article class="toggle-area">
+      <button
+        name="test"
+        onclick={() => {
+          setTheme(isDarkMode ? Theme.Light : Theme.Dark);
+          isDarkMode = !isDarkMode;
+
+          if (isDarkMode) {
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
+          } else {
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
+          }
+        }}
+        class="theme-btn"
+      >
+        {#if isDarkMode}
+          <DarkIcon />
+          <span class="visible-hidden">Change to light mode</span>
+        {:else}
+          <LightIcon />
+          <span class="visible-hidden">Change to dark mode</span>
+        {/if}
+      </button>
+    </article>
   </section>
 </section>
 
 <style>
+  :root {
+    --animation-delay: 200ms;
+  }
+
   .nav {
     display: flex;
     align-items: center;
@@ -112,7 +118,7 @@
 
   .dark-light-mode-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding: var(--spacing-lg);
     gap: var(--spacing-sm);
     z-index: 20;
@@ -121,22 +127,41 @@
     align-self: center;
   }
 
+  .toggle-area {
+    display: flex;
+    color: var(--surface-text-color);
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
   button {
-    border: var(--thin) solid var(--logo-color);
+    border: var(--normal) solid var(--logo-color);
     background: none;
     cursor: pointer;
-    border-radius: 16px;
-    width: 32px;
-    height: 32px;
+    border-radius: 24px;
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
-    opacity: 0.4;
   }
 
-  .active {
-    opacity: 1;
+  @keyframes slide-spin {
+    from {
+      transform: none;
+    }
+    to {
+      transform: translateX(-8px) rotate(420deg);
+    }
+  }
+
+  .theme-btn:focus {
+    animation: slide-spin var(--animation-delay);
+  }
+
+  .theme-btn:active {
+    animation: none;
   }
 
   .stack {

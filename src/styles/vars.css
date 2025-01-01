@@ -1,7 +1,9 @@
 :root {
     --thin: 1px;
+    --normal: 2px;
     --thick: 4px;
 
+    --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 12px;
     --spacing-lg: 20px; 
