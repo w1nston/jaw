@@ -1,8 +1,6 @@
-import { getStuffDrafts } from '../../../features/stuff/getStuffDrafts.server';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export let load: PageServerLoad = async ({ params }) => {
-    return {
-        drafts: await getStuffDrafts()
-    }
+    return redirect(301, '/stuff');
 }
