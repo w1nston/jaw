@@ -20,16 +20,18 @@
       <p class="empty-stuff">Nothing here yet...</p>
     </div>
   {:else}
-    {#each stuff as specificStuff, index}
-      <a href={`/stuff/${specificStuff.id}`}>
-        <ContentSurface
-          {index}
-          title={specificStuff.title}
-          abstract={specificStuff.abstract}
-          tags={specificStuff.tags}
-        />
-      </a>
-    {/each}
+    <div class="stuff-container">
+      {#each stuff as specificStuff, index}
+        <a href={`/stuff/${specificStuff.id}`}>
+          <ContentSurface
+            {index}
+            title={specificStuff.title}
+            abstract={specificStuff.abstract}
+            tags={specificStuff.tags}
+          />
+        </a>
+      {/each}
+    </div>
   {/if}
 </section>
 
@@ -53,5 +55,18 @@
   .rss-icon-container {
     display: flex;
     align-self: center;
+  }
+
+  .stuff-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 640px) {
+    .stuff-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 </style>

@@ -43,4 +43,12 @@
   section {
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
+
+
+  @media (min-width: 640px) {
+    section {
+      max-width: 60vw;
+      margin: 0 auto;
+    }
+  }
 </style>

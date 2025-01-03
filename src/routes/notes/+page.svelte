@@ -15,11 +15,13 @@
       <p class="visible-hidden">Link to RSS Feed for "Notes"</p>
     </a>
   </h1>
-  {#each notes as note, index}
-    <a href={`/notes/${note.id}`}>
-      <ContentSurface {index} title={note.title} abstract={note.abstract} tags={note.tags} />
-    </a>
-  {/each}
+  <div class="notes-container">
+    {#each notes as note, index}
+      <a href={`/notes/${note.id}`}>
+        <ContentSurface {index} title={note.title} abstract={note.abstract} tags={note.tags} />
+      </a>
+    {/each}
+  </div>
 </section>
 
 <style>
@@ -48,5 +50,19 @@
     flex-direction: column;
     gap: var(--spacing-lg);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    max-width: 100vw;
+  }
+
+  .notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 640px) {
+    .notes-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 </style>
