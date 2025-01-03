@@ -50,13 +50,16 @@
     flex-direction: column;
     gap: var(--spacing-lg);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
-    max-width: 100vw;
   }
 
   .notes-container {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
+  }
+
+  .notes-container > a:active {
+    transform: scale(1.1);
   }
 
   @media (min-width: 640px) {
