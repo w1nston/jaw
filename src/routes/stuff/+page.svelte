@@ -63,6 +63,10 @@
     gap: var(--spacing-lg);
   }
 
+  .stuff-container > a:active {
+    transform: scale(1.1);
+  }
+
   @media (min-width: 640px) {
     .stuff-container {
       flex-direction: row;

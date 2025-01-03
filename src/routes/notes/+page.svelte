@@ -15,13 +15,19 @@
       <p class="visible-hidden">Link to RSS Feed for "Notes"</p>
     </a>
   </h1>
-  <div class="notes-container">
-    {#each notes as note, index}
-      <a href={`/notes/${note.id}`}>
-        <ContentSurface {index} title={note.title} abstract={note.abstract} tags={note.tags} />
-      </a>
-    {/each}
-  </div>
+  {#if notes.length < 1}
+    <div class="empty-container">
+      <p class="empty-notes">Nothing here yet...</p>
+    </div>
+  {:else}
+    <div class="notes-container">
+      {#each notes as note, index}
+        <a href={`/notes/${note.id}`}>
+          <ContentSurface {index} title={note.title} abstract={note.abstract} tags={note.tags} />
+        </a>
+      {/each}
+    </div>
+  {/if}
 </section>
 
 <style>
@@ -48,7 +54,6 @@
   section {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
     padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   }
 
@@ -56,6 +61,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
   }
 
   .notes-container > a:active {
