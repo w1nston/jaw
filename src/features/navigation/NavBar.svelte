@@ -110,10 +110,18 @@
     transform: rotate(-2deg);
   }
 
+  .nav > a:active {
+    transform: scale(1.2);
+  }
+
   .nav-link {
     color: var(--surface-text-color);
     background-color: var(--surface-color);
     padding: var(--spacing-sm);
+  }
+
+  .nav-link:active {
+    font-weight: 700;
   }
 
   .dark-light-mode-container {
