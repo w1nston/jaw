@@ -25,7 +25,9 @@
     background-color: var(--surface-text-color);
     color: var(--surface-color);
     font-weight: 700;
-    padding: var(--spacing-sm);
+    font-size: 0.625rem;
+    padding: var(--spacing-xs);
+    border-radius: 2px;
   }
 
   .even {
