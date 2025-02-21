@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/private';
+import * as env from '$env/static/private';
 import { createApi, type Api } from '$lib/apis/apiFactory.server';
 import { marked } from 'marked';
 import type { GetSpecificStuffDraftFn, GetSpecificStuffFn, GetStuffDraftsFn, GetStuffFn, Stuff, StuffApi, StuffMetadata } from '../../../types/stuff';
