@@ -1,13 +1,24 @@
+test-results
 node_modules
 
-/.cache
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
 /build
-/dist
-/public/build
-/.mf
-.env
 
-.vscode
+# OS
 .DS_Store
+Thumbs.db
 
-wrangler.toml
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--background-color);
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+  min-height: calc(100vh - env(safe-area-inset-bottom));
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 2.5rem;
+}

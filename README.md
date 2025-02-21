@@ -1,37 +1,38 @@
-# Welcome to Remix!
+# sv
 
-- [Remix Docs](https://remix.run/docs)
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Development
+## Creating a project
 
-You will be running two processes during development:
+If you're seeing this, you've probably already done this step. Congrats!
 
-- The Miniflare server (miniflare is a local environment for Cloudflare Workers)
-- The Remix development server
+```bash
+# create a new project in the current directory
+npx sv create
 
-Both are started with one command:
+# create a new project in my-app
+npx sv create my-app
+```
 
-```sh
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
 npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
+## Building
 
-If you want to check the production build, you can stop the dev server and run following commands:
+To create a production version of your app:
 
-```sh
+```bash
 npm run build
-npm start
 ```
 
-Then refresh the same URL in your browser (no live reload for production builds).
+You can preview the production build with `npm run preview`.
 
-## Deployment
-
-If you don't already have an account, then [create a cloudflare account here](https://dash.cloudflare.com/sign-up) and after verifying your email address with Cloudflare, go to your dashboard and set up your free custom Cloudflare Workers subdomain.
-
-Once that's done, you should be able to deploy your app:
-
-```sh
-npm run deploy
-```
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
